@@ -1,0 +1,122 @@
+<!--login.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DailyMart — Login</title>
+  <link rel="stylesheet" href="css/index-style.css" />
+  <link rel="stylesheet" href="css/login-style.css" />
+</head>
+<body>
+
+  <!-- ✅ Header with Logo Only -->
+  <header class="main-header">
+    <div class="header-left">
+      <h1 class="logo">
+        <span class="green">Daily</span><span class="orange">Mart</span>
+      </h1>
+    </div>
+    <div class="header-center"></div>
+    <div class="header-right"></div>
+  </header>
+
+   <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="login.html">Login</a>
+  </div>
+
+  <main class="login-container">
+    <h2>Login with Phone</h2>
+
+    <!-- Step 1: Enter Phone -->
+    <div id="step1">
+      <input type="tel" id="phone" placeholder="Enter phone number" required />
+      <button onclick="sendOTP()">Send OTP</button>
+    </div>
+
+    <!-- Step 2: Enter OTP -->
+    <div id="step2" style="display: none;">
+      <input type="text" id="otp" placeholder="Enter OTP" required />
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <!-- Step 3: User Profile Details -->
+    <div id="step3" style="display: none;">
+      <input type="text" id="fname" placeholder="First Name" required />
+      <input type="text" id="lname" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="number" id="pin" placeholder="PIN Code" required />
+      <button onclick="validatePIN()">Submit</button>
+    </div>
+
+    <p id="error" class="error"></p>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-links">
+        <a href="#">About Us</a> |
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        📧 support@dailymart.com | 📞 +91-9876543210
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 DailyMart — All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- ✅ JavaScript -->
+  <script>
+    function sendOTP() {
+      const phone = document.getElementById('phone').value;
+      if (phone.length >= 10) {
+        alert('OTP sent (dummy: 1234)');
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+      } else {
+        alert('Enter valid phone number.');
+      }
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById('otp').value;
+      if (otp === '1234') {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+      } else {
+        alert('Invalid OTP. Try 1234.');
+      }
+    }
+
+    function validatePIN() {
+      const pin = document.getElementById('pin').value;
+      const allowedPins = ['600001', '641602', '641601'];
+
+      if (allowedPins.includes(pin)) {
+        const user = {
+          fname: document.getElementById('fname').value,
+          lname: document.getElementById('lname').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          pin
+        };
+        localStorage.setItem('userProfile', JSON.stringify(user));
+        localStorage.setItem('user', 'true');
+
+        alert('Welcome ' + user.fname + '!');
+
+        // ✅ Redirect to stored page or default to home
+        const redirect = localStorage.getItem('loginRedirect');
+        localStorage.removeItem('loginRedirect');
+        location.replace(redirect || 'index.html');
+
+      } else {
+        document.getElementById('error').textContent = 'Unavailable PIN code. Try again.';
+      }
+    }
+  </script>
+</body>
+</html>

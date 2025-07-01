@@ -1,0 +1,185 @@
+<!--- product.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products - DailyMart</title>
+  <link rel="stylesheet" href="css/product-style.css">
+  <link rel="stylesheet" href="css/index-style.css">
+</head>
+<body>
+
+  <header class="main-header">
+  <!-- ✅ Logo -->
+  <div class="header-left">
+    <h1 class="logo">
+      <span class="green">Daily</span><span class="orange">Mart</span>
+    </h1>
+  </div>
+
+  <!-- ✅ Center: Search + Routine -->
+  <div class="header-center1" style="display: flex; align-items: center; gap: 50px;">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for Products...">
+    <div id="searchDropdown" class="search-dropdown"></div>
+   <div class="routine2">
+    <span class="routine2-label">Routine ▼</span>
+    <div class="routine2-content">
+    <a href="#" data-value="daily">Daily</a>
+    <a href="#" data-value="weekly">Weekly</a>
+    <a href="#" data-value="monthly">Monthly</a>
+  </div>
+</div>
+</div>
+
+  <!-- ✅ Right: Pincode + Cart + Settings -->
+  <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+    <span class="location">📍 600003, Chennai</span>
+    <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    <div class="settings">
+      <span class="profile-icon" onclick="handleSettingsClick()" title="Settings">⚙️</span>
+    </div>
+  </div>
+</header>
+
+<!-- Remaining content is unchanged -->
+<nav class="top-nav">
+  <div class="dropdown">
+    <button class="dropdown-btn">Shop by Category ▾</button>
+    <div class="dropdown-content">
+      <a href="product.html?cat=dairy-products">Dairy Products</a>
+      <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+      <a href="product.html?cat=household-cleaning">Household & Cleaning</a>
+      <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+      <a href="product.html?cat=personal-care">Personal Care</a>
+      <a href="product.html?cat=electronics">Electronics</a>
+      <a href="product.html?cat=fashion">Fashion</a>
+      <a href="product.html?cat=beverages">Beverages</a>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <a href="product.html?cat=dairy-products">Dairy Products</a>
+    <a href="product.html?cat=household-cleaning">Household Products</a>
+    <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+    <a href="product.html?cat=personal-care">Personal Care</a>
+    <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <a href="product.html">Product</a>
+</div>
+
+<div class="main-container">
+  <aside class="sidebar">
+    <h3>Filter By</h3>
+    <ul>
+      <li><a onclick="filterTab('offer')">Offer Products</a></li>
+    </ul>
+
+    <div class="filter-group">
+      <label>Product</label>
+      <select id="productTypeFilter">
+        <option value="">All</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Brand</label>
+      <div id="brandFilter"></div>
+    </div>
+
+    <div class="filter-group" id="sizeFilterGroup">
+      <label>Pack Size</label>
+      <div id="sizeFilter"></div>
+    </div>
+
+    <div class="filter-group" id="colorFilterGroup" style="display: none;">
+      <label>Color</label>
+      <label><input type="checkbox" value="Black"> Black</label>
+      <label><input type="checkbox" value="White"> White</label>
+      <label><input type="checkbox" value="Blue"> Blue</label>
+      <label><input type="checkbox" value="Red"> Red</label>
+    </div>
+  </aside>
+
+  <main class="product-area">
+    <div class="product-header">
+      <h2 id="categoryTitle">All Products</h2>
+      <select class="sort-box">
+        <option>Relevance</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+    </div>
+
+    <div id="productGrid" class="product-grid">
+      <!-- Products will load here -->
+    </div>
+  </main>
+</div>
+
+<!-- ✅ FOOTER (Same as Other Pages) -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-links">
+      <a href="#">About Us</a> |
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-contact">
+      📧 support@dailymart.com | 📞 +91-9876543210
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 DailyMart — All Rights Reserved
+  </div>
+</footer>
+
+<script src="js/product.js"></script>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('cat');
+  if (catParam) {
+    window.addEventListener('load', () => {
+      currentCategory = catParam;
+      showProducts(currentCategory);
+    });
+  }
+</script>
+
+<!-- ✅ Routine Login Redirect Fix -->
+<script>
+  function isLoggedIn() {
+    return !!localStorage.getItem('user');
+  }
+
+  function redirectToLoginWithRoutine(routineType) {
+    const redirectUrl = `checkout.html?routine=${routineType}`;
+    localStorage.setItem('loginRedirect', redirectUrl);
+    window.location.href = `login.html`;
+  }
+
+  document.querySelectorAll('.routine2-content a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const type = e.target.dataset.value;
+      if (!isLoggedIn()) {
+        redirectToLoginWithRoutine(type);
+      } else {
+        window.location.href = `checkout.html?routine=${type}`;
+      }
+    });
+  });
+
+  function handleSettingsClick() {
+    if (!isLoggedIn()) {
+      localStorage.setItem('loginRedirect', 'settings.html');
+      window.location.href = 'login.html';
+    } else {
+      window.location.href = 'settings.html';
+    }
+  }
+</script>
+</body>
+</html>

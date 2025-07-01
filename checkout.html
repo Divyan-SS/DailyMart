@@ -1,0 +1,145 @@
+<!---checkout.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DailyMart — Checkout</title>
+  <link rel="stylesheet" href="css/checkout-style.css" />
+</head>
+<body>
+
+  <!-- ✅ HEADER -->
+  <header class="main-header">
+    <div class="header-left">
+      <h1 class="logo">
+        <span class="green">Daily</span><span class="orange">Mart</span>
+      </h1>
+    </div>
+
+    <!-- ✅ Center: Search + Routine -->
+    <div class="header-center">
+      <div class="search-bar-wrapper">
+        <input id="searchInput" class="search-bar search-input" placeholder="Search for products...">
+        <div id="searchDropdown" class="search-dropdown"></div>
+      </div>
+
+      <div class="routine">
+        <span class="routine-label">Routine ▼</span>
+        <div class="routine-content">
+          <a href="#" data-value="daily">Daily</a>
+          <a href="#" data-value="weekly">Weekly</a>
+          <a href="#" data-value="monthly">Monthly</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Right: Location + Cart + Settings -->
+    <div class="header-right">
+      <span class="location">📍 600003, Chennai</span>
+      <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+      <div class="settings">
+        <span class="profile-icon" id="settingsBtn" title="Settings">⚙️</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ✅ Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a>
+  </div>
+
+  <!-- ✅ MAIN CHECKOUT AREA -->
+  <main class="checkout-main">
+    <h1 class="checkout-title">🧾 Your Cart</h1>
+
+    <div id="empty-cart-message" class="empty-cart-msg" style="display: none;">
+      🛒 Your cart is empty! <br />
+      <span>Buy products to enjoy exclusive deals and routine delivery options.</span><br />
+      <a href="product.html" class="btn go-shop-btn">🛍️ Start Shopping</a>
+    </div>
+
+    <div id="checkout-products" class="checkout-wrapper"></div>
+
+    <div class="checkout-actions">
+      <button id="add-more-btn">➕ Add More Products</button>
+      <button id="discard-selected-btn">🗑️ Discard Product</button>
+      <button id="discard-all-btn">🗑️ Discard All Products</button>
+    </div>
+
+    <div class="checkout-footer">
+      <button class="proceed-btn" onclick="proceedToPay()">✅ Proceed to Pay</button>
+    </div>
+  </main>
+
+  <!-- ✅ FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-links">
+        <a href="#">About Us</a> |
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        📧 support@dailymart.com | 📞 +91-9876543210
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 DailyMart — All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- ✅ JS Logic -->
+  <script src="js/checkout.js"></script>
+
+  <!-- ✅ Login Protection Script -->
+  <script>
+    function isLoggedIn() {
+      return !!localStorage.getItem('user');
+    }
+
+    function redirectToLoginWithResume(target) {
+      localStorage.setItem('loginRedirect', target);
+      window.location.href = 'login.html';
+    }
+
+    // Routine click protection
+    document.querySelectorAll('.routine-content a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const type = e.target.dataset.value;
+        const target = `checkout.html?routine=${type}`;
+        if (!isLoggedIn()) {
+          redirectToLoginWithResume(target);
+        } else {
+          window.location.href = target;
+        }
+      });
+    });
+
+    // Proceed to Pay protection
+    function proceedToPay() {
+      if (!isLoggedIn()) {
+        redirectToLoginWithResume('payment.html');
+      } else {
+        window.location.href = 'payment.html';
+      }
+    }
+
+    // Settings icon login check
+    document.getElementById('settingsBtn').addEventListener('click', () => {
+      if (!isLoggedIn()) {
+        redirectToLoginWithResume('settings.html');
+      } else {
+        window.location.href = 'settings.html';
+      }
+    });
+
+    function onLoginSuccess() {
+      localStorage.setItem('user', 'true');
+      const redirect = localStorage.getItem('loginRedirect') || 'index.html';
+      localStorage.removeItem('loginRedirect');
+      window.location.href = redirect;
+    }
+  </script>
+</body>
+</html>

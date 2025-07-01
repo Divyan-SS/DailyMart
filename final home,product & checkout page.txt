@@ -1,0 +1,3314 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DailyMart - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index-style.css">
+  <link rel="stylesheet" href="css/product-style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <!-- ✅ Logo -->
+  <div class="header-left">
+    <h1 class="logo">
+      <span class="green">Daily</span><span class="orange">Mart</span>
+    </h1>
+  </div>
+
+  <!-- ✅ Center: Search + Routine -->
+  <div class="header-center1" style="display: flex; align-items: center; gap: 50px;">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for Products...">
+    <div id="searchDropdown" class="search-dropdown"></div>
+   <div class="routine2">
+    <span class="routine2-label">Routine ▼</span>
+    <div class="routine2-content">
+    <a href="#" data-value="daily">Daily</a>
+    <a href="#" data-value="weekly">Weekly</a>
+    <a href="#" data-value="monthly">Monthly</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+  <!-- ✅ Right: Pincode + Cart + Settings -->
+  <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+    <span class="location">📍 600003, Chennai</span>
+    <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    
+    <div class="settings">
+      <span class="profile-icon">⚙️</span>
+      <div class="settings-content">
+        <a href="#">My Account</a>
+        <a href="#">My Orders</a>
+        <a href="#">My Wallet</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="top-nav">
+  <div class="dropdown">
+    <button class="dropdown-btn">Shop by Category ▾</button>
+    <div class="dropdown-content">
+      <a href="product.html?cat=dairy-products">Dairy Products</a>
+      <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+      <a href="product.html?cat=household-cleaning">Household & Cleaning</a>
+      <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+      <a href="product.html?cat=personal-care">Personal Care</a>
+      <a href="product.html?cat=electronics">Electronics</a>
+      <a href="product.html?cat=fashion">Fashion</a>
+      <a href="product.html?cat=beverages">Beverages</a>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <a href="product.html">All Products</a>
+    <a href="product.html?cat=dairy-products">Dairy Products</a>
+    <a href="product.html?cat=household-cleaning">Household Products</a>
+    <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+    <a href="product.html?cat=personal-care">Personal Care</a>
+    <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> 
+</div>
+
+<main class="product-area">
+  <div class="product-header">
+    <h2>Explore Our Products</h2>
+    <select class="sort-box">
+      <option>Relevance</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
+  </div>
+  <div id="productGrid" class="product-grid"></div>
+</main>
+
+ <!-- ✅ FOOTER (Same as Other Pages) -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-links">
+      <a href="#">About Us</a> |
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-contact">
+      📧 support@dailymart.com | 📞 +91-9876543210
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 DailyMart — All Rights Reserved
+  </div>
+</footer>
+
+<script defer src="js/index.js" ></script>
+</body>
+</html>
+
+
+
+
+<!--- product.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products - DailyMart</title>
+  <link rel="stylesheet" href="css/product-style.css">
+  <link rel="stylesheet" href="css/index-style.css">
+</head>
+<body>
+
+  <header class="main-header">
+  <!-- ✅ Logo -->
+  <div class="header-left">
+    <h1 class="logo">
+      <span class="green">Daily</span><span class="orange">Mart</span>
+    </h1>
+  </div>
+
+  <!-- ✅ Center: Search + Routine -->
+  <div class="header-center1" style="display: flex; align-items: center; gap: 50px;">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for Products...">
+    <div id="searchDropdown" class="search-dropdown"></div>
+   <div class="routine2">
+    <span class="routine2-label">Routine ▼</span>
+    <div class="routine2-content">
+    <a href="#" data-value="daily">Daily</a>
+    <a href="#" data-value="weekly">Weekly</a>
+    <a href="#" data-value="monthly">Monthly</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+  <!-- ✅ Right: Pincode + Cart + Settings -->
+  <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+    <span class="location">📍 600003, Chennai</span>
+    <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    
+    <div class="settings">
+      <span class="profile-icon">⚙️</span>
+      <div class="settings-content">
+        <a href="#">My Account</a>
+        <a href="#">My Orders</a>
+        <a href="#">My Wallet</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <!-- Remaining content is unchanged -->
+  <nav class="top-nav">
+    <div class="dropdown">
+      <button class="dropdown-btn">Shop by Category ▾</button>
+      <div class="dropdown-content">
+        <a href="product.html?cat=dairy-products">Dairy Products</a>
+        <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+        <a href="product.html?cat=household-cleaning">Household & Cleaning</a>
+        <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+        <a href="product.html?cat=personal-care">Personal Care</a>
+        <a href="product.html?cat=electronics">Electronics</a>
+        <a href="product.html?cat=fashion">Fashion</a>
+        <a href="product.html?cat=beverages">Beverages</a>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <a href="product.html?cat=dairy-products">Dairy Products</a>
+      <a href="product.html?cat=household-cleaning">Household Products</a>
+      <a href="product.html?cat=fruits-vegetables">Fruits & Vegetables</a>
+      <a href="product.html?cat=personal-care">Personal Care</a>
+      <a href="product.html?cat=kitchen-essentials">Kitchen Essentials</a>
+    </div>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="product.html">Product</a>
+  </div>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <h3>Filter By</h3>
+      <ul>
+        <li><a onclick="filterTab('offer')">Offer Products</a></li>
+      </ul>
+
+      <div class="filter-group">
+        <label>Product</label>
+        <select id="productTypeFilter">
+          <option value="">All</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Brand</label>
+        <div id="brandFilter"></div>
+      </div>
+
+      <div class="filter-group" id="sizeFilterGroup">
+        <label>Pack Size</label>
+        <div id="sizeFilter"></div>
+      </div>
+
+      <div class="filter-group" id="colorFilterGroup" style="display: none;">
+        <label>Color</label>
+        <label><input type="checkbox" value="Black"> Black</label>
+        <label><input type="checkbox" value="White"> White</label>
+        <label><input type="checkbox" value="Blue"> Blue</label>
+        <label><input type="checkbox" value="Red"> Red</label>
+      </div>
+    </aside>
+
+    <main class="product-area">
+      <div class="product-header">
+        <h2 id="categoryTitle">All Products</h2>
+        <select class="sort-box">
+          <option>Relevance</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+        </select>
+      </div>
+
+      <div id="productGrid" class="product-grid">
+        <!-- Products will load here -->
+      </div>
+    </main>
+  </div>
+
+   <!-- ✅ FOOTER (Same as Other Pages) -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-links">
+      <a href="#">About Us</a> |
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-contact">
+      📧 support@dailymart.com | 📞 +91-9876543210
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 DailyMart — All Rights Reserved
+  </div>
+</footer>
+
+  <script src="js/product.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat');
+    if (catParam) {
+      window.addEventListener('load', () => {
+        currentCategory = catParam;
+        showProducts(currentCategory);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!---checkout.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DailyMart — Checkout</title>
+  <link rel="stylesheet" href="css/checkout-style.css" />
+  
+
+</head>
+<body>
+
+  <!-- ✅ HEADER (Same as Home/Product Page) -->
+<header class="main-header">
+  <!-- ✅ Logo -->
+  <div class="header-left">
+
+    <h1 class="logo">
+      <span class="green">Daily</span><span class="orange">Mart</span>
+    </h1>
+  </div>
+
+  <!-- ✅ Center: Search + Routine -->
+  <div class="header-center">
+  <div class="search-bar-wrapper">   
+  <input id="searchInput" class="search-bar search-input" placeholder="Search for products...">
+  <div id="searchDropdown" class="search-dropdown"></div>
+</div>
+
+      <div class="routine">
+  <span class="routine-label">Routine ▼</span>
+  <div class="routine-content">
+    <a href="#" data-value="daily">Daily</a>
+    <a href="#" data-value="weekly">Weekly</a>
+    <a href="#" data-value="monthly">Monthly</a>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- ✅ Right: Pincode + Cart + Settings -->
+  <div class="header-right">
+    <span class="location">📍 600003, Chennai</span>
+    <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    <div class="settings">
+      <span class="profile-icon">⚙️</span>
+      <div class="settings-content">
+        <a href="#">My Account</a>
+        <a href="#">My Orders</a>
+        <a href="#">My Wallet</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a>
+  </div>
+
+
+  <!-- ✅ MAIN CHECKOUT AREA -->
+  <main class="checkout-main">
+    <h1 class="checkout-title">🧾 Your Cart</h1>
+        
+    <div id="empty-cart-message" class="empty-cart-msg" style="display: none;">
+      🛒 Your cart is empty! <br />
+      <span>Buy products to enjoy exclusive deals and routine delivery options.</span><br />
+      <a href="product.html" class="btn go-shop-btn">🛍️ Start Shopping</a>
+    </div>
+
+
+
+    <!-- 🔄 Dynamic Product Cards Will Render Here -->
+    <div id="checkout-products" class="checkout-wrapper"></div>
+
+    <!-- 🔘 Action Buttons -->
+    <div class="checkout-actions">
+      <button id="add-more-btn">➕ Add More Products</button>
+      <button id="discard-selected-btn">🗑️ Discard Product</button>
+      <button id="discard-all-btn">🗑️ Discard All Products</button>
+    </div>
+
+    <!-- 💳 Proceed Button (placeholder only) -->
+    <div class="checkout-footer">
+  <button class="proceed-btn" onclick="window.location.href='payment.html'">✅ Proceed to Pay</button>
+</div>
+
+
+ <!-- ✅ FOOTER (Same as Other Pages) -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-links">
+      <a href="#">About Us</a> |
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-contact">
+      📧 support@dailymart.com | 📞 +91-9876543210
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 DailyMart — All Rights Reserved
+  </div>
+</footer>
+
+  <!-- ✅ JS Logic -->
+  <script src="js/checkout.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+/* ---index-style.css-- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, a, select, button, span, div, input {
+  font-family: 'Poppins', sans-serif !important;
+}
+/* --- HEADER WRAPPER --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* --- LOGO --- */
+.header-left .logo {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.green {
+  color: #4CAF50;
+}
+
+.orange {
+  color: #ff4d4f;
+}
+/* === New Routine Dropdown Variant === */
+.routine2 {
+  position: relative;
+}
+
+.routine2-label {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+  width: 170px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.routine2-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  z-index: 999;
+  font-size: 18px;
+  text-align: center;
+  width: 200px; /* Adjusted for better dropdown look */
+  display: none;
+}
+
+.routine2:hover .routine2-content,
+.routine2.open .routine2-content {
+  display: block;
+}
+
+.routine2-content a {
+  display: block;
+  padding: 10px 14px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.3s ease, padding-left 0.2s;
+  font-weight:500;
+}
+
+.routine2-content a:hover {
+  background-color: #e0f7e9;
+  color: #2e7d32; /* Optional */
+  padding-left: 18px; /* Optional animation like settings */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+/* --- RIGHT: PINCODE + CART + SETTINGS --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.location {
+  font-size: 18px;
+  color: #444;
+}
+
+/* Cart */
+.cart-icon {
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+/* Settings Dropdown */
+.settings {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 20px;
+}
+.settings-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background-color: #f9f9f9; /* Softer BG */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  min-width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 6px 0;
+  text-align: center;
+}
+
+.settings:hover .settings-content {
+  display: block;
+}
+
+.settings-content a {
+  display: block;
+  padding: 12px 18px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s, padding-left 0.2s;
+}
+
+.settings-content a:hover {
+  background-color: #e0f7e9;
+  padding-left: 22px;
+  color: #2e7d32;
+}
+
+
+/* --- Responsive (Mobile Fix) --- */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-center {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
+
+/* --- CATEGORY FILTER (Sticky Top-Nav) --- */
+.top-nav {
+  background-color: #fff;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 105px; /* height of header */
+  z-index: 999;
+}
+.dropdown-btn {
+  background: #e3f2fd;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-right: 20px;
+  color: #0277bd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 10;
+  top: 40px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0f7fa;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-tabs a {
+  margin-right: 16px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-tabs a:hover {
+  background-color: #e3fce9;
+  color: #222;
+}
+
+/* --- BREADCRUMB (Sticky) --- */
+.breadcrumb {
+  background-color: #f1f1f1;
+  padding: 12px 24px;
+  font-size: 14px;
+  position: sticky;
+  top: 160px; /* header + nav combined */
+  z-index: 998;
+}
+
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.categories {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.categories h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.category-card {
+  background: #f0f4f8;
+  padding: 20px;
+  width: 180px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #333;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.category-card:hover {
+  background-color: #d0e8cc;
+  transform: scale(1.02);
+}
+
+/* ---------- FOOTER STYLES ---------- */
+.site-footer {
+  margin-top: 60px;
+  font-family: 'Poppins', sans-serif;
+  background: #4CAF50;
+  color: white;
+  text-align: center;
+  width: 1900px;
+  margin-left: -10px;
+  height: 1px;
+}
+
+.footer-top {
+  background-color: #4CAF50;
+  padding: 20px;
+  width: 1900px;
+  margin-left: -35px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: color 0.3s;
+  
+}
+
+.footer-links a:hover {
+  color: #ffcdd2;
+  
+}
+
+.footer-contact {
+  background-color: #ff4d4f;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px; 
+  margin-top: 20px;
+}
+
+.footer-bottom {
+  background-color: #388e3c;
+  padding: 14px 0;
+  font-size: 14px;
+  width: 1950px;
+  margin-left: -25px;
+  
+}
+
+/* -------- 🔽 Search Dropdown Wrapper -------- */
+/* ✅ Fix search dropdown container alignment */
+.header-center1 {
+  position: relative; /* Needed for dropdown absolute positioning */
+}
+
+/* ✅ Updated Search Dropdown for proper placement */
+.search-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 625px;
+  max-height: 350px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  margin-left: 72px;
+} 
+
+/* ✅ Mobile Responsive: Adjust width and position */
+@media (max-width: 768px) {
+  .search-dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+}
+
+
+
+/* -------- 🔽 Search Suggestion Item -------- */
+.search-suggestion {
+  display: grid;
+  grid-template-columns: 60px 160px 90px 90px 110px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.search-suggestion:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Image Section */
+.search-image-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-image-section img {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Offer Badge */
+.search-offer-tag {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4f;
+  color: white;
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.search-name {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* Price Display Section */
+.search-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+
+.search-price-section .strike {
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.search-price-section .final {
+  font-weight: bold;
+  color: #333;
+}
+
+.variant-select {
+  width: 100%;
+  height: 30px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* Quantity Controls */
+.qty-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+
+.qty-btns button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.qty-btns .add-btn {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  font-weight: 500;
+  margin-top: -10px;
+  
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+
+  .search-suggestion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-block {
+    flex-direction: row;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .search-routine-settings {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav, .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-dropdown {
+    width: 95%;
+    left: 2.5%;
+  }
+}
+
+/* ---------- HOME PAGE PRODUCT GRID & CARD ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch; /* ✅ Force row cards same height */
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch; /* ✅ Force row cards same height */
+}
+
+.product-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-sizing: border-box; /* ✅ Ensures padding doesn't break size */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  height: auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 6px 0 8px;
+  color: #222;
+  min-height: 38px;
+}
+
+.variant-select {
+  margin: 6px 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  width: 100%;
+}
+
+.product-card .price-display {
+  font-weight: bold;
+  color: #4CAF50;
+  margin: 6px 0;
+  min-height: 22px;
+}
+
+.product-card .rating {
+  font-size: 13px;
+  color: #ffa000;
+  margin-bottom: 8px;
+}
+
+.product-card .add-btn,
+.product-card .quantity-control {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.qty-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.qty-btns button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.discount-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff5252;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.delivery-info {
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.sort-box {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding-right: 30px;
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+/* On hover border color */
+.sort-box:hover {
+  border-color: #388e3c;
+}
+
+/* On focus (when opened) */
+.sort-box:focus {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 5px rgba(238, 26, 26, 0.6);
+}
+/* Force custom look inside open options (for WebKit browsers like Chrome, Edge) */
+.sort-box option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* Simulate hover behavior inside options using this trick */
+.sort-box option:hover,
+.sort-box option:checked {
+  background-color: #f1f8e9; /* Light green highlight */
+  color: #4CAF50;
+}
+
+
+
+
+
+
+
+/* product-style.css — Enhanced UI for DailyMart Product Page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, a, select, button, span, div, input {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+
+
+
+.green {
+  color: #4CAF50; /* A nice green shade */
+}
+
+.yellow {
+  color: #ff4d4f; /* A warm yellow shade */
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* --- SEARCH + ROUTINE SECTION --- */
+.header-center1 {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  margin-left: 300px;
+  gap : 50px;
+}
+
+/* Search Input */
+
+.search-bar {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 600px;
+}
+.routine-label {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+  width: 170px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.routine-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  z-index: 999;
+  font-size: 18px;
+  text-align: center;
+  margin-top: -5px;
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.routine:hover .routine-content,
+.routine.open .routine-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  font-size: 16px;
+}
+
+.routine-content a {
+  display: block;
+  padding: 10px 14px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+.routine-content a:hover {
+  background-color: #f5f5f5;
+  font-size: 16px;
+  transform: translateX(4px); /* subtle lift effect */
+  font-weight: bold;
+}
+
+.cart-icon, .profile-icon, .location {
+  font-size: 18px;
+  margin-left: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+/* MAIN LAYOUT */
+.main-container {
+  display: flex;
+  padding: 24px;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #fff;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar h3 {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #f1f8e9;
+  font-size: 15px;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.filter-group {
+  margin: 20px 0;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.filter-group select, .filter-group input[type="checkbox"] {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* PRODUCT AREA */
+.product-area {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-header h2 {
+  font-size: 24px;
+}
+
+/* GRID & CARD */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+.product-card {
+  background: #fff;
+  border: 1px solid #000000;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.product-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  color: #222;
+  margin: 6px 0 8px;
+  min-height: 38px; /* Ensures title height consistent */
+}
+
+.variant-select {
+  margin: 6px 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  width: 100%;
+}
+
+.product-card .price-display {
+  font-weight: bold;
+  color: #4CAF50;
+  margin: 6px 0;
+  min-height: 22px;
+}
+
+.product-card .rating {
+  font-size: 13px;
+  color: #ffa000;
+  margin-bottom: 8px;
+}
+
+.product-card .add-btn,
+.product-card .quantity-control {
+  margin-top: auto;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-control button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.discount-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff5252;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.delivery-info {
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+/* Footer */
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  margin-top: 40px;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-contact {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+/* checkout-style.css — Enhanced UI for DailyMart Product Page */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ✅ HEADER WRAPPER */
+.main-header {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 38px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+}
+
+/* ✅ LOGO */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 10px;
+}
+
+.green {
+  color: #4CAF50;
+}
+
+.orange {
+  color: #ff4d4f; /* Replacing yellow with orange if you want that name */
+}
+
+/* ✅ CENTER: SEARCH + ROUTINE */
+.header-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  margin-left: 550px;
+  gap: -60px;
+}
+
+.search-bar {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 600px;
+  margin-left: -250px;
+}
+/* ✅ ROUTINE DROPDOWN */
+.routine-label {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  background-color: #fff;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.routine-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  z-index: 999;
+  width: 197px;
+  display: none;
+  margin-left: 1250px;
+  margin-top: -37px;
+
+}
+
+.routine:hover .routine-content,
+.routine.open .routine-content {
+  display: block;
+}
+.routine-content a {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  font-weight:500;
+  /* ✅ Animate background, text color, and position */
+  transition: background-color 0.3s ease, padding-left 0.2s;
+
+}
+
+.routine-content a:hover {
+  background-color: #e0f7e9;
+  color: #2e7d32;
+  padding-left: 18px; 
+  font-size: 16px;
+  font-weight: bold;
+  
+}
+
+
+/* ✅ RIGHT SIDE: LOCATION + CART + SETTINGS */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.location {
+  font-size: 18px;
+  color: #333;
+}
+
+.cart-icon {
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+
+
+.profile-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+/* Settings Dropdown */
+.settings {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 20px;
+}
+.settings-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background-color: #f9f9f9; /* Softer BG */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  min-width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 6px 0;
+  text-align: center;
+}
+
+.settings:hover .settings-content {
+  display: block;
+}
+
+.settings-content a {
+  display: block;
+  padding: 12px 18px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s, padding-left 0.2s;
+}
+
+.settings-content a:hover {
+  background-color: #e0f7e9;
+  padding-left: 22px;
+  color: #2e7d32;
+}
+
+
+/*---breadcrumb----*/
+.breadcrumb {
+  position: fixed;
+  top: 115px;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 12px 24px;
+  font-size: 14px;
+  z-index: 1100; /* higher than header if needed */
+}
+
+
+
+/* ✅ MAIN */
+.checkout-main {
+  padding: 32px;
+  margin-top: 30px;
+}
+
+.checkout-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+
+/* empty card words */
+.empty-cart-msg {
+  text-align: center;
+  color: #444;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 100px;
+  padding: 40px;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.go-shop-btn {
+  
+  margin-top: 40px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.go-shop-btn:hover {
+  background-color: #45a049;
+}
+
+
+/* product card wrapper */
+.checkout-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ⬅️ 4 cards per row */
+  gap: 24px;
+  padding: 10px;
+  margin-left: -15px;
+}
+
+/* ✅ PRODUCT CARD */
+.checkout-card {
+  width: 100%; /* ⬅️ Use full width of its grid cell */
+  height: 200px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.checkout-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.checkout-card input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+.checkout-offer {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 16px;
+  border-radius: 4px;
+  margin-left: 20px;
+}
+.checkout-img {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+
+
+.checkout-info {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.checkout-info h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.checkout-price {
+  font-size: 15px;
+  margin: 4px 0;
+}
+
+.checkout-price s {
+  color: #999;
+  margin-right: 6px;
+}
+
+.checkout-routine {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.routine-btn {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.routine-btn.active {
+  background: #4CAF50;
+  border-color: #030403;
+  color: white;
+}
+
+.qty-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.qty-btns button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+
+/* ✅ ACTION BUTTONS */
+.checkout-actions {
+  margin: 32px 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-left: 600px;
+  margin-top: 100px;
+}
+
+.checkout-actions button {
+  padding: 10px 18px;
+  font-size: 15px;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.checkout-actions button:hover {
+  background: #ff4d4f;
+}
+
+/* ✅ PROCEED TO PAY */
+.checkout-footer {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.proceed-btn {
+  background: #4CAF50;
+;
+  color: white;
+  font-size: 18px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.proceed-btn:hover {
+  background: #2e7d32;
+}
+
+
+/* ---------- FOOTER STYLES ---------- */
+.site-footer {
+  margin-top: 60px;
+  font-family: 'Poppins', sans-serif;
+  background: #4CAF50;
+  color: white;
+  text-align: center;
+  width: 1900px;
+  margin-left: 5px;
+  height: 1px;
+  
+}
+
+.footer-top {
+  background-color: #4CAF50;
+  padding: 20px;
+  width: 1902px;
+  margin-left: -37px;
+  
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: color 0.3s;
+  
+}
+
+.footer-links a:hover {
+  color: #ffcdd2;
+  
+}
+
+.footer-contact {
+  background-color: #ff4d4f;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px; 
+  margin-top: 20px;
+  width: 1902px;
+  margin-left: -20px;
+
+}
+
+.footer-bottom {
+  background-color: #388e3c;
+  padding: 14px 0;
+  font-size: 14px;
+  width: 1950px;
+  margin-left: -37px;
+  
+}
+/* -------- 🔽 Search Suggestion wrapper -------- */
+
+#searchDropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 600px;
+  max-height: 350px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  margin-left: -250px;
+  
+}
+/* ✅ Updated Layout for Horizontal Search Suggestion Row */
+.search-suggestion {
+  display: grid;
+  grid-template-columns: 60px 200px 120px 120px 140px;
+  align-items: center;
+  gap: 50px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s ease;
+}
+
+.search-suggestion:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+
+/* -------- 🔽 Image Section -------- */
+.search-image-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-image-section img {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* -------- 🔽 Offer Badge -------- */
+.search-offer-tag {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4f;
+  color: white;
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* -------- 🔽 Name -------- */
+.search-name {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  word-break: break-word;
+  margin-left: -20px;
+}
+
+/* -------- 🔽 Price Section -------- */
+.search-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+  margin-left: 160px;
+  margin-top: -35px;
+}
+
+.search-price-section .strike {
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.search-price-section .final {
+  font-weight: bold;
+  color: #333;
+}
+
+/* -------- 🔽 Variant Dropdown -------- */
+.variant-select {
+  text-align: center;
+  width: 110px;
+  height: 30px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+/* -------- 🔽 Quantity Buttons -------- */
+.qty-btns1 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  
+}
+
+.qty-btns1 button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: -7px;
+}
+
+.qty-btns1 .add-btn {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  font-weight: 500;
+  margin-left: 15px;
+
+}
+
+/* -------- 🔽 Wrapper & Structure -------- */
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.search-info-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search-action-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* -------- 🔽 Responsive Adjustments -------- */
+@media (max-width: 768px) {
+  .search-dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+
+  .search-suggestion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-price-section {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .category-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-routine-settings {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav,
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #searchDropdown {
+    width: 95%;
+    left: 2.5%;
+  }
+}
+
+
+
+
+
+
+
+
+//indexjs
+window.products = [
+  { category: 'dairy-products', name: 'Milk - Aavin', img: 'images/dairy-products/milk/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Milk - Heritage', img: 'images/dairy-products/milk/heritage_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Curd - Aavin', img: 'images/dairy-products/curd/aavin_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Curd - Hatsun', img: 'images/dairy-products/curd/hatsun_f2.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Butter - Amul', img: 'images/dairy-products/butter/amul_f1.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Butter - Britannia', img: 'images/dairy-products/butter/britannia_f2.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Ghee - Aavin', img: 'images/dairy-products/ghee/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Ghee - GRB', img: 'images/dairy-products/ghee/grb_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Cheese - Amul', img: 'images/dairy-products/cheese/amul_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Cheese - Britannia', img: 'images/dairy-products/cheese/britannia_f2.jpg', price: 60, rating: 4.0 },
+
+  // Household Cleaning
+  { category: 'household-cleaning', name: 'Floor Cleaner - Lizol', img: 'images/household-cleaning/floor_cleaner/lizol_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Floor Cleaner - Harpic', img: 'images/household-cleaning/floor_cleaner/harpic_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Vim', img: 'images/household-cleaning/dishwash_liquid/vim_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Pril', img: 'images/household-cleaning/dishwash_liquid/pril_f2.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Harpic', img: 'images/household-cleaning/toilet_cleaner/harpic_f1.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Domex', img: 'images/household-cleaning/toilet_cleaner/domex_f2.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Surf Excel', img: 'images/household-cleaning/detergent_powder/surf_excel_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Ariel', img: 'images/household-cleaning/detergent_powder/ariel_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Room Freshener - Odonil', img: 'images/household-cleaning/room_freshener/odonil_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Room Freshener - Godrej', img: 'images/household-cleaning/room_freshener/godrej_f2.jpg', price: 65, rating: 4.1 },
+
+  // Fruits & Vegetables
+  { category: 'fruits-vegetables', name: 'Apple - Local Farm', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 120, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Apple - FreshPick', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 125, rating: 4.4 },
+  { category: 'fruits-vegetables', name: 'Banana - Local Farm', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 45, rating: 4.0 },
+  { category: 'fruits-vegetables', name: 'Banana - FreshPick', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 48, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Tomato - Local Farm', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 30, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Tomato - FreshPick', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 32, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Potato - Local Farm', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 35, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Potato - FreshPick', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 38, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Carrot - Local Farm', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 50, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Carrot - FreshPick', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 52, rating: 4.2 },
+  // Personal Care
+  { category: 'personal-care', name: 'Shampoo - Dove', img: 'images/personal-care/shampoo/dove_f1.jpg', price: 95, rating: 4.4 },
+  { category: 'personal-care', name: 'Shampoo - Clinic Plus', img: 'images/personal-care/shampoo/clinic_plus_f2.jpg', price: 85, rating: 4.2 },
+  { category: 'personal-care', name: 'Soap - Lux', img: 'images/personal-care/soap/lux_f1.jpg', price: 35, rating: 4.1 },
+  { category: 'personal-care', name: 'Soap - Dove', img: 'images/personal-care/soap/dove_f2.jpg', price: 45, rating: 4.3 },
+  { category: 'personal-care', name: 'Toothpaste - Colgate', img: 'images/personal-care/toothpaste/colgate_f1.jpg', price: 55, rating: 4.4 },
+  { category: 'personal-care', name: 'Toothpaste - Pepsodent', img: 'images/personal-care/toothpaste/pepsodent_f2.jpg', price: 52, rating: 4.2 },
+  { category: 'personal-care', name: 'Face Wash - Himalaya', img: 'images/personal-care/face_wash/himalaya_f1.jpg', price: 60, rating: 4.3 },
+  { category: 'personal-care', name: 'Face Wash - Garnier', img: 'images/personal-care/face_wash/garnier_f2.jpg', price: 65, rating: 4.4 },
+  { category: 'personal-care', name: 'Body Lotion - Nivea', img: 'images/personal-care/body_lotion/nivea_f1.jpg', price: 90, rating: 4.5 },
+  { category: 'personal-care', name: 'Body Lotion - Vaseline', img: 'images/personal-care/body_lotion/vaseline_f2.jpg', price: 95, rating: 4.6 },
+
+  // Kitchen Essentials
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Fortune', img: 'images/kitchen-essentials/cooking_oil/fortune_f1.jpg', price: 110, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Gold Winner', img: 'images/kitchen-essentials/cooking_oil/gold_winner_f2.jpg', price: 115, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Rice - India Gate', img: 'images/kitchen-essentials/rice/india_gate_f1.jpg', price: 160, rating: 4.5 },
+  { category: 'kitchen-essentials', name: 'Rice - Ponni', img: 'images/kitchen-essentials/rice/ponni_f2.jpg', price: 150, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Aashirvaad', img: 'images/kitchen-essentials/wheat_flour/aashirvaad_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Pillsbury', img: 'images/kitchen-essentials/wheat_flour/pillsbury_f2.jpg', price: 125, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Masala - Sakthi', img: 'images/kitchen-essentials/masala/sakthi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'kitchen-essentials', name: 'Masala - Aachi', img: 'images/kitchen-essentials/masala/aachi_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Salt - Tata', img: 'images/kitchen-essentials/salt/tata_f1.jpg', price: 20, rating: 4.0 },
+  { category: 'kitchen-essentials', name: 'Salt - Aashirvaad', img: 'images/kitchen-essentials/salt/aashirvaad_f2.jpg', price: 22, rating: 4.1 },
+
+  // Electronics
+  { category: 'electronics', name: 'Mobile Phone - Samsung', img: 'images/electronics/mobile_phone/samsung_f1.jpg', price: 12000, rating: 4.5 },
+  { category: 'electronics', name: 'Mobile Phone - Redmi', img: 'images/electronics/mobile_phone/redmi_f2.jpg', price: 10000, rating: 4.4 },
+  { category: 'electronics', name: 'Headphones - Boat', img: 'images/electronics/headphones/boat_f1.jpg', price: 999, rating: 4.3 },
+  { category: 'electronics', name: 'Headphones - JBL', img: 'images/electronics/headphones/jbl_f2.jpg', price: 1499, rating: 4.4 },
+  { category: 'electronics', name: 'Power Bank - Mi', img: 'images/electronics/power_bank/mi_f1.jpg', price: 899, rating: 4.2 },
+  { category: 'electronics', name: 'Power Bank - Realme', img: 'images/electronics/power_bank/realme_f2.jpg', price: 950, rating: 4.3 },
+  { category: 'electronics', name: 'USB Cable - Portronics', img: 'images/electronics/usb_cable/portronics_f1.jpg', price: 199, rating: 4.0 },
+  { category: 'electronics', name: 'USB Cable - Mi', img: 'images/electronics/usb_cable/mi_f2.jpg', price: 180, rating: 4.1 },
+  { category: 'electronics', name: 'Bluetooth Speaker - JBL', img: 'images/electronics/bluetooth_speaker/jbl_f1.jpg', price: 2500, rating: 4.5 },
+  { category: 'electronics', name: 'Bluetooth Speaker - Boat', img: 'images/electronics/bluetooth_speaker/boat_f2.jpg', price: 2200, rating: 4.3 },
+
+  // Fashion
+  { category: 'fashion', name: 'T-shirt - Puma', img: 'images/fashion/t_shirt/puma_f1.jpg', price: 699, rating: 4.2 },
+  { category: 'fashion', name: 'T-shirt - Adidas', img: 'images/fashion/t_shirt/adidas_f2.jpg', price: 749, rating: 4.3 },
+  { category: 'fashion', name: 'Jeans - Levis', img: 'images/fashion/jeans/levis_f1.jpg', price: 1999, rating: 4.5 },
+  { category: 'fashion', name: 'Jeans - Wrangler', img: 'images/fashion/jeans/wrangler_f2.jpg', price: 1899, rating: 4.4 },
+  { category: 'fashion', name: 'Sneakers - Nike', img: 'images/fashion/sneakers/nike_f1.jpg', price: 2999, rating: 4.6 },
+  { category: 'fashion', name: 'Sneakers - Puma', img: 'images/fashion/sneakers/puma_f2.jpg', price: 2899, rating: 4.5 },
+  { category: 'fashion', name: 'Jacket - Allen Solly', img: 'images/fashion/jacket/allen_solly_f1.jpg', price: 3499, rating: 4.4 },
+  { category: 'fashion', name: 'Jacket - Peter England', img: 'images/fashion/jacket/peter_england_f2.jpg', price: 3299, rating: 4.3 },
+  { category: 'fashion', name: 'Sunglasses - Fastrack', img: 'images/fashion/sunglasses/fastrack_f1.jpg', price: 999, rating: 4.2 },
+  { category: 'fashion', name: 'Sunglasses - Ray-Ban', img: 'images/fashion/sunglasses/rayban_f2.jpg', price: 2499, rating: 4.6 },
+
+  // Beverages
+  { category: 'beverages', name: 'Tea - Tata Tea', img: 'images/beverages/tea/tata_tea_f1.jpg', price: 120, rating: 4.3 },
+  { category: 'beverages', name: 'Tea - Red Label', img: 'images/beverages/tea/red_label_f2.jpg', price: 125, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Bru', img: 'images/beverages/coffee/bru_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Nescafe', img: 'images/beverages/coffee/nescafe_f2.jpg', price: 135, rating: 4.5 },
+  { category: 'beverages', name: 'Fruit Juice - Tropicana', img: 'images/beverages/fruit_juice/tropicana_f1.jpg', price: 90, rating: 4.2 },
+  { category: 'beverages', name: 'Fruit Juice - Real', img: 'images/beverages/fruit_juice/real_f2.jpg', price: 95, rating: 4.3 },
+  { category: 'beverages', name: 'Soft Drink - Pepsi', img: 'images/beverages/soft_drink/pepsi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'beverages', name: 'Soft Drink - Coca-Cola', img: 'images/beverages/soft_drink/coca_cola_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'beverages', name: 'Energy Drink - Red Bull', img: 'images/beverages/energy_drink/red_bull_f1.jpg', price: 110, rating: 4.5 },
+  { category: 'beverages', name: 'Energy Drink - Monster', img: 'images/beverages/energy_drink/monster_f2.jpg', price: 115, rating: 4.6 }
+];
+
+window.categoryOffers = {
+  'dairy-products': {0: 28, 1: 9, 4: 8, 6: 28, 9: 26},
+  'household-cleaning': {0: 21, 1: 11, 6: 12, 7: 24, 8: 7},
+  'fruits-vegetables': {0: 27, 3: 18, 5: 12, 6: 19, 8: 22},
+  'personal-care': {0: 15, 1: 9, 4: 18, 6: 13, 9: 27},
+  'kitchen-essentials': {0: 16, 1: 32, 3: 8, 5: 16, 9: 24},
+  'electronics': {0: 17, 4: 34, 7: 7, 8: 14, 9: 22},
+  'fashion': {0: 14, 3: 12, 5: 26, 8: 29, 9: 6},
+  'beverages': {1: 19, 2: 10, 3: 25, 8: 16, 9: 31}
+};
+
+
+// 🧠 State variables
+let sortPreference = 'Relevance';
+const grid = document.getElementById('productGrid');
+window.cart = JSON.parse(localStorage.getItem('cart')) || {}; // 🛒 cart item count
+window.selectedVariants = JSON.parse(localStorage.getItem('selectedVariants')) || {}; // 🎯 user-selected variant
+
+// 🆔 Create a unique key for product + variant combo
+window.uniqueKey = function(name, variant) {
+  return `${name}|${variant}`;
+}
+
+// 💾 Save cart and variants to localStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('selectedVariants', JSON.stringify(selectedVariants));
+  updateCartCount();
+}
+
+// 🔢 Update cart count display
+function updateCartCount() {
+  const count = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+  const el = document.getElementById('cartCount');
+  if (el) el.textContent = count;
+}
+
+// 🧂 Category type checkers
+function isSolid(c) {
+  return ['fruits-vegetables', 'kitchen-essentials', 'personal-care', 'fashion'].includes(c);
+}
+function isLiquid(c) {
+  return ['dairy-products', 'household-cleaning', 'beverages'].includes(c);
+}
+function isColorCategory(c) {
+  return ['electronics', 'fashion'].includes(c);
+}
+
+// 🎨 Get variant options by category
+function getVariantOptions(c) {
+  if (isColorCategory(c)) return ['White', 'Black', 'Red', 'Blue'];
+  if (isSolid(c)) return ['500g', '1kg'];
+  if (isLiquid(c)) return ['500ml', '1L'];
+  return [];
+}
+
+// 💸 Calculate price based on variant size
+window.getAdjustedPrice = function(b, v){
+  if (!v) return b;
+  if (v.includes('1kg') || v.includes('1L')) return b * 2;
+  return b;
+}
+
+// 🧱 Render a single product card
+function renderProductCard(p, i) {
+  const o = categoryOffers[p.category]?.[i % 10] || null; // Offer %
+  const b = p.price, r = p.rating;
+  const v = getVariantOptions(p.category);
+  const s = selectedVariants[p.name] || v[0]; // Selected variant
+  const k = uniqueKey(p.name, s);
+  const a = getAdjustedPrice(b, s); // Adjusted price
+  const d = o ? Math.floor(a * (o / 100)) : 0;
+  const f = a - d; // Final price
+  const old = o ? `<s>₹${a}</s>` : '';
+  const q = cart[k] || 0;
+
+  const c = document.createElement('div');
+  c.className = 'product-card';
+  c.innerHTML = `
+    ${o ? `<div class="discount-tag">${o}% OFF</div>` : ''}
+    <img src="${p.img}" alt="${p.name}">
+    <h3>${p.name}</h3>
+    <select class="variant-select" onchange="updateVariantAndPrice(this, '${p.name}', ${b}, ${o || 0})">
+      ${v.map(opt => `<option value="${opt}" ${opt === s ? 'selected' : ''}>${opt}</option>`).join('')}
+    </select>
+    <p class="price-display">${old} <strong>₹${f}</strong></p>
+    <div class="rating">⭐ ${r}</div>
+    <div class="qty-btns">
+      ${q === 0 ? `<button class="add-btn" onclick="increaseQty('${p.name}', '${s}')">Add</button>` : `<button onclick="decreaseQty('${p.name}', '${s}')">-</button><span>${q}</span><button onclick="increaseQty('${p.name}', '${s}')">+</button>`}
+    </div>
+    <p class="delivery-info">Delivery by Tomorrow, 6–8 AM | ₹10 extra for express</p>
+  `;
+  return c;
+}
+
+// 🔁 Update variant + price on dropdown change
+function updateVariantAndPrice(select, name, base, offer) {
+  const variant = select.value;
+  selectedVariants[name] = variant;
+  const price = getAdjustedPrice(base, variant);
+  const discount = offer ? Math.floor(price * (offer / 100)) : 0;
+  const final = price - discount;
+  const old = offer ? `<s>₹${price}</s>` : '';
+  select.nextElementSibling.innerHTML = `${old} <strong>₹${final}</strong>`;
+  
+  const btnWrap = select.nextElementSibling.nextElementSibling.nextElementSibling;
+  const k = uniqueKey(name, variant);
+  const q = cart[k] || 0;
+  btnWrap.innerHTML = q === 0
+    ? `<button class="add-btn" onclick="increaseQty('${name}', '${variant}')">Add</button>`
+    : `<button onclick="decreaseQty('${name}', '${variant}')">-</button><span>${q}</span><button onclick="increaseQty('${name}', '${variant}')">+</button>`;
+  saveCart();
+}
+
+// ➕ Increase product quantity in cart
+function increaseQty(name, variant, isSearch = false) {
+  const key = uniqueKey(name, variant);
+  cart[key] = (cart[key] || 0) + 1;
+  selectedVariants[name] = variant;
+  saveCart();
+  isSearch ? rerenderSearchSuggestions() : showAllProducts();
+}
+
+// ➖ Decrease product quantity in cart
+function decreaseQty(name, variant, isSearch = false) {
+  const key = uniqueKey(name, variant);
+  if (cart[key]) {
+    cart[key]--;
+    if (cart[key] <= 0) delete cart[key];
+    saveCart();
+    isSearch ? rerenderSearchSuggestions() : showAllProducts();
+  }
+}
+
+// 🧃🧺 Show all products with sorting applied
+function showAllProducts() {
+  grid.innerHTML = '';
+  const sortedProducts = [...products].sort((a, b) => {
+    const i1 = products.indexOf(a), i2 = products.indexOf(b);
+    const o1 = categoryOffers[a.category]?.[i1 % 10] || 0;
+    const o2 = categoryOffers[b.category]?.[i2 % 10] || 0;
+    const v1 = selectedVariants[a.name] || getVariantOptions(a.category)[0];
+    const v2 = selectedVariants[b.name] || getVariantOptions(b.category)[0];
+    const p1 = getAdjustedPrice(a.price, v1);
+    const p2 = getAdjustedPrice(b.price, v2);
+    const f1 = o1 ? p1 - Math.floor(p1 * o1 / 100) : p1;
+    const f2 = o2 ? p2 - Math.floor(p2 * o2 / 100) : p2;
+    if (sortPreference === 'Price: Low to High') return f1 - f2;
+    if (sortPreference === 'Price: High to Low') return f2 - f1;
+    return 0;
+  });
+  sortedProducts.forEach(p => grid.appendChild(renderProductCard(p, products.indexOf(p))));
+}
+
+// 📦 Filter products by selected category
+function filterByCategory(c) {
+  grid.innerHTML = '';
+  products.forEach((p, i) => {
+    if (p.category === c) grid.appendChild(renderProductCard(p, i));
+  });
+}
+
+// 🔍 Re-render search suggestions as user types
+function rerenderSearchSuggestions() {
+  const term = searchInput.value.toLowerCase();
+  searchDropdown.innerHTML = '';
+  if (!term) return searchDropdown.style.display = 'none';
+  const matched = products.filter(p => p.name.toLowerCase().includes(term)).slice(0, 6);
+  matched.forEach((p, i) => {
+    const o = categoryOffers[p.category]?.[i % 10] || 0;
+    const b = p.price, r = p.rating;
+    const v = getVariantOptions(p.category), s = selectedVariants[p.name] || v[0];
+    const k = uniqueKey(p.name, s);
+    const a = getAdjustedPrice(b, s), d = o ? Math.floor(a * o / 100) : 0;
+    const f = a - d;
+    const offerTag = o ? `<div class="search-offer-tag">${o}% OFF</div>` : '';
+    const q = cart[k] || 0;
+    const item = document.createElement('div');
+    item.className = 'search-suggestion';
+    item.innerHTML = `
+      <div class="search-image-section"><img src="${p.img}" alt="${p.name}">${offerTag}</div>
+      <div class="search-name">${p.name}</div>
+      <div class="search-price-section">${o ? `<span class="strike">₹${a}</span> <span class="final">₹${f}</span>` : `<span class="final">₹${f}</span>`}</div>
+      <select class="variant-select" onchange="handleSearchVariantChange(this, '${p.name}', ${b}, ${o})">
+        ${v.map(opt => `<option value="${opt}" ${opt === s ? 'selected' : ''}>${opt}</option>`).join('')}
+      </select>
+      <div class="qty-btns">
+        ${q === 0 ? `<button class="add-btn" onclick="increaseQty('${p.name}', '${s}', true)">Add</button>` : `<button onclick="decreaseQty('${p.name}', '${s}', true)">-</button><span>${q}</span><button onclick="increaseQty('${p.name}', '${s}', true)">+</button>`}
+      </div>`;
+    searchDropdown.appendChild(item);
+  });
+  searchDropdown.style.display = matched.length ? 'block' : 'none';
+}
+
+// 🔁 Update variant & price inside live search dropdown
+function handleSearchVariantChange(select, name, base, offer) {
+  const variant = select.value;
+  selectedVariants[name] = variant;
+  const priceSection = select.previousElementSibling;
+  const price = getAdjustedPrice(base, variant);
+  const discount = offer ? Math.floor(price * offer / 100) : 0;
+  const final = price - discount;
+  priceSection.innerHTML = `${offer ? `<span class="strike">₹${price}</span>` : ''}<span class="final">₹${final}</span>`;
+  const btnWrap = select.nextElementSibling;
+  const k = uniqueKey(name, variant);
+  const q = cart[k] || 0;
+  btnWrap.innerHTML = q === 0
+    ? `<button class="add-btn" onclick="increaseQty('${name}', '${variant}', true)">Add</button>`
+    : `<button onclick="decreaseQty('${name}', '${variant}', true)">-</button><span>${q}</span><button onclick="increaseQty('${name}', '${variant}', true)">+</button>`;
+  saveCart();
+}
+
+// 🔗 Get category name from URL parameter
+function getCategoryFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('cat');
+}
+
+// 🟢 Page Load Actions
+window.addEventListener('load', () => {
+  updateCartCount();
+  const cat = getCategoryFromURL();
+  cat ? filterByCategory(cat) : showAllProducts();
+});
+
+// 🔁 Sorting dropdown event
+document.querySelector('.sort-box').addEventListener('change', e => {
+  sortPreference = e.target.value;
+  showAllProducts();
+});
+
+// 🔍 Live search input listeners
+const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
+searchInput.addEventListener('input', rerenderSearchSuggestions);
+searchInput.addEventListener('focus', rerenderSearchSuggestions);
+
+// ⛔ Hide search suggestions on outside click
+document.addEventListener('click', e => {
+  if (!searchDropdown.contains(e.target) && e.target !== searchInput && !e.target.closest('.qty-btns')) {
+    searchDropdown.style.display = 'none';
+  }
+});
+
+// 📆 Routine dropdown toggle
+document.querySelector('.routine-label').addEventListener('click', e => {
+  e.currentTarget.parentElement.classList.toggle('open');
+});
+document.querySelectorAll('.routine-content a').forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    const val = e.target.getAttribute('data-value');
+    document.querySelector('.routine-label').textContent = e.target.textContent + ' ▼';
+    e.target.closest('.routine').classList.remove('open');
+    console.log('Selected routine:', val);
+  });
+});
+
+
+
+
+
+
+
+
+
+//product.js
+
+//product data
+
+window.products = [
+  // Dairy Products
+  { category: 'dairy-products', name: 'Milk - Aavin', img: 'images/dairy-products/milk/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Milk - Heritage', img: 'images/dairy-products/milk/heritage_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Curd - Aavin', img: 'images/dairy-products/curd/aavin_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Curd - Hatsun', img: 'images/dairy-products/curd/hatsun_f2.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Butter - Amul', img: 'images/dairy-products/butter/amul_f1.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Butter - Britannia', img: 'images/dairy-products/butter/britannia_f2.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Ghee - Aavin', img: 'images/dairy-products/ghee/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Ghee - GRB', img: 'images/dairy-products/ghee/grb_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Cheese - Amul', img: 'images/dairy-products/cheese/amul_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Cheese - Britannia', img: 'images/dairy-products/cheese/britannia_f2.jpg', price: 60, rating: 4.0 },
+
+  // Household Cleaning
+  { category: 'household-cleaning', name: 'Floor Cleaner - Lizol', img: 'images/household-cleaning/floor_cleaner/lizol_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Floor Cleaner - Harpic', img: 'images/household-cleaning/floor_cleaner/harpic_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Vim', img: 'images/household-cleaning/dishwash_liquid/vim_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Pril', img: 'images/household-cleaning/dishwash_liquid/pril_f2.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Harpic', img: 'images/household-cleaning/toilet_cleaner/harpic_f1.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Domex', img: 'images/household-cleaning/toilet_cleaner/domex_f2.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Surf Excel', img: 'images/household-cleaning/detergent_powder/surf_excel_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Ariel', img: 'images/household-cleaning/detergent_powder/ariel_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Room Freshener - Odonil', img: 'images/household-cleaning/room_freshener/odonil_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Room Freshener - Godrej', img: 'images/household-cleaning/room_freshener/godrej_f2.jpg', price: 65, rating: 4.1 },
+
+  // Fruits & Vegetables
+  { category: 'fruits-vegetables', name: 'Apple - Local Farm', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 120, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Apple - FreshPick', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 125, rating: 4.4 },
+  { category: 'fruits-vegetables', name: 'Banana - Local Farm', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 45, rating: 4.0 },
+  { category: 'fruits-vegetables', name: 'Banana - FreshPick', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 48, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Tomato - Local Farm', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 30, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Tomato - FreshPick', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 32, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Potato - Local Farm', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 35, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Potato - FreshPick', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 38, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Carrot - Local Farm', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 50, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Carrot - FreshPick', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 52, rating: 4.2 },
+  // Personal Care
+  { category: 'personal-care', name: 'Shampoo - Dove', img: 'images/personal-care/shampoo/dove_f1.jpg', price: 95, rating: 4.4 },
+  { category: 'personal-care', name: 'Shampoo - Clinic Plus', img: 'images/personal-care/shampoo/clinic_plus_f2.jpg', price: 85, rating: 4.2 },
+  { category: 'personal-care', name: 'Soap - Lux', img: 'images/personal-care/soap/lux_f1.jpg', price: 35, rating: 4.1 },
+  { category: 'personal-care', name: 'Soap - Dove', img: 'images/personal-care/soap/dove_f2.jpg', price: 45, rating: 4.3 },
+  { category: 'personal-care', name: 'Toothpaste - Colgate', img: 'images/personal-care/toothpaste/colgate_f1.jpg', price: 55, rating: 4.4 },
+  { category: 'personal-care', name: 'Toothpaste - Pepsodent', img: 'images/personal-care/toothpaste/pepsodent_f2.jpg', price: 52, rating: 4.2 },
+  { category: 'personal-care', name: 'Face Wash - Himalaya', img: 'images/personal-care/face_wash/himalaya_f1.jpg', price: 60, rating: 4.3 },
+  { category: 'personal-care', name: 'Face Wash - Garnier', img: 'images/personal-care/face_wash/garnier_f2.jpg', price: 65, rating: 4.4 },
+  { category: 'personal-care', name: 'Body Lotion - Nivea', img: 'images/personal-care/body_lotion/nivea_f1.jpg', price: 90, rating: 4.5 },
+  { category: 'personal-care', name: 'Body Lotion - Vaseline', img: 'images/personal-care/body_lotion/vaseline_f2.jpg', price: 95, rating: 4.6 },
+
+  // Kitchen Essentials
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Fortune', img: 'images/kitchen-essentials/cooking_oil/fortune_f1.jpg', price: 110, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Gold Winner', img: 'images/kitchen-essentials/cooking_oil/gold_winner_f2.jpg', price: 115, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Rice - India Gate', img: 'images/kitchen-essentials/rice/india_gate_f1.jpg', price: 160, rating: 4.5 },
+  { category: 'kitchen-essentials', name: 'Rice - Ponni', img: 'images/kitchen-essentials/rice/ponni_f2.jpg', price: 150, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Aashirvaad', img: 'images/kitchen-essentials/wheat_flour/aashirvaad_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Pillsbury', img: 'images/kitchen-essentials/wheat_flour/pillsbury_f2.jpg', price: 125, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Masala - Sakthi', img: 'images/kitchen-essentials/masala/sakthi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'kitchen-essentials', name: 'Masala - Aachi', img: 'images/kitchen-essentials/masala/aachi_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Salt - Tata', img: 'images/kitchen-essentials/salt/tata_f1.jpg', price: 20, rating: 4.0 },
+  { category: 'kitchen-essentials', name: 'Salt - Aashirvaad', img: 'images/kitchen-essentials/salt/aashirvaad_f2.jpg', price: 22, rating: 4.1 },
+
+  // Electronics
+  { category: 'electronics', name: 'Mobile Phone - Samsung', img: 'images/electronics/mobile_phone/samsung_f1.jpg', price: 12000, rating: 4.5 },
+  { category: 'electronics', name: 'Mobile Phone - Redmi', img: 'images/electronics/mobile_phone/redmi_f2.jpg', price: 10000, rating: 4.4 },
+  { category: 'electronics', name: 'Headphones - Boat', img: 'images/electronics/headphones/boat_f1.jpg', price: 999, rating: 4.3 },
+  { category: 'electronics', name: 'Headphones - JBL', img: 'images/electronics/headphones/jbl_f2.jpg', price: 1499, rating: 4.4 },
+  { category: 'electronics', name: 'Power Bank - Mi', img: 'images/electronics/power_bank/mi_f1.jpg', price: 899, rating: 4.2 },
+  { category: 'electronics', name: 'Power Bank - Realme', img: 'images/electronics/power_bank/realme_f2.jpg', price: 950, rating: 4.3 },
+  { category: 'electronics', name: 'USB Cable - Portronics', img: 'images/electronics/usb_cable/portronics_f1.jpg', price: 199, rating: 4.0 },
+  { category: 'electronics', name: 'USB Cable - Mi', img: 'images/electronics/usb_cable/mi_f2.jpg', price: 180, rating: 4.1 },
+  { category: 'electronics', name: 'Bluetooth Speaker - JBL', img: 'images/electronics/bluetooth_speaker/jbl_f1.jpg', price: 2500, rating: 4.5 },
+  { category: 'electronics', name: 'Bluetooth Speaker - Boat', img: 'images/electronics/bluetooth_speaker/boat_f2.jpg', price: 2200, rating: 4.3 },
+
+  // Fashion
+  { category: 'fashion', name: 'T-shirt - Puma', img: 'images/fashion/t_shirt/puma_f1.jpg', price: 699, rating: 4.2 },
+  { category: 'fashion', name: 'T-shirt - Adidas', img: 'images/fashion/t_shirt/adidas_f2.jpg', price: 749, rating: 4.3 },
+  { category: 'fashion', name: 'Jeans - Levis', img: 'images/fashion/jeans/levis_f1.jpg', price: 1999, rating: 4.5 },
+  { category: 'fashion', name: 'Jeans - Wrangler', img: 'images/fashion/jeans/wrangler_f2.jpg', price: 1899, rating: 4.4 },
+  { category: 'fashion', name: 'Sneakers - Nike', img: 'images/fashion/sneakers/nike_f1.jpg', price: 2999, rating: 4.6 },
+  { category: 'fashion', name: 'Sneakers - Puma', img: 'images/fashion/sneakers/puma_f2.jpg', price: 2899, rating: 4.5 },
+  { category: 'fashion', name: 'Jacket - Allen Solly', img: 'images/fashion/jacket/allen_solly_f1.jpg', price: 3499, rating: 4.4 },
+  { category: 'fashion', name: 'Jacket - Peter England', img: 'images/fashion/jacket/peter_england_f2.jpg', price: 3299, rating: 4.3 },
+  { category: 'fashion', name: 'Sunglasses - Fastrack', img: 'images/fashion/sunglasses/fastrack_f1.jpg', price: 999, rating: 4.2 },
+  { category: 'fashion', name: 'Sunglasses - Ray-Ban', img: 'images/fashion/sunglasses/rayban_f2.jpg', price: 2499, rating: 4.6 },
+
+  // Beverages
+  { category: 'beverages', name: 'Tea - Tata Tea', img: 'images/beverages/tea/tata_tea_f1.jpg', price: 120, rating: 4.3 },
+  { category: 'beverages', name: 'Tea - Red Label', img: 'images/beverages/tea/red_label_f2.jpg', price: 125, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Bru', img: 'images/beverages/coffee/bru_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Nescafe', img: 'images/beverages/coffee/nescafe_f2.jpg', price: 135, rating: 4.5 },
+  { category: 'beverages', name: 'Fruit Juice - Tropicana', img: 'images/beverages/fruit_juice/tropicana_f1.jpg', price: 90, rating: 4.2 },
+  { category: 'beverages', name: 'Fruit Juice - Real', img: 'images/beverages/fruit_juice/real_f2.jpg', price: 95, rating: 4.3 },
+  { category: 'beverages', name: 'Soft Drink - Pepsi', img: 'images/beverages/soft_drink/pepsi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'beverages', name: 'Soft Drink - Coca-Cola', img: 'images/beverages/soft_drink/coca_cola_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'beverages', name: 'Energy Drink - Red Bull', img: 'images/beverages/energy_drink/red_bull_f1.jpg', price: 110, rating: 4.5 },
+  { category: 'beverages', name: 'Energy Drink - Monster', img: 'images/beverages/energy_drink/monster_f2.jpg', price: 115, rating: 4.6 }
+];
+
+
+// --- Category Names ---
+const categoryNames = {
+  'all': 'All Products',
+  'offer': 'All Offer Products',
+  'dairy-products': 'Dairy Products',
+  'fruits-vegetables': 'Fruits & Vegetables',
+  'household-cleaning': 'Household & Cleaning',
+  'kitchen-essentials': 'Kitchen Essentials',
+  'personal-care': 'Personal Care',
+  'electronics': 'Electronics',
+  'fashion': 'Fashion',
+  'beverages': 'Beverages'
+};
+
+// --- Category Offers ---
+window.categoryOffers = {
+  'dairy-products': {0: 28, 1: 9, 4: 8, 6: 28, 9: 26},
+  'household-cleaning': {0: 21, 1: 11, 6: 12, 7: 24, 8: 7},
+  'fruits-vegetables': {0: 27, 3: 18, 5: 12, 6: 19, 8: 22},
+  'personal-care': {0: 15, 1: 9, 4: 18, 6: 13, 9: 27},
+  'kitchen-essentials': {0: 16, 1: 32, 3: 8, 5: 16, 9: 24},
+  'electronics': {0: 17, 4: 34, 7: 7, 8: 14, 9: 22},
+  'fashion': {0: 14, 3: 12, 5: 26, 8: 29, 9: 6},
+  'beverages': {1: 19, 2: 10, 3: 25, 8: 16, 9: 31}
+};
+
+// ===== Globals & DOM References ==========================================
+const grid = document.getElementById('productGrid');
+const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
+window.cart = JSON.parse(localStorage.getItem('cart')) || {};
+window.selectedVariants = JSON.parse(localStorage.getItem('selectedVariants')) || {};
+let currentCategory = 'all';
+let selectedFilters = {product: '', brand: '', pack: ''};
+let sortPreference = 'Relevance';
+
+
+// ===== Utility Helpers ====================================================
+
+window.uniqueKey = function(name, variant) {
+  return `${name}|${variant}`;
+}
+function isSolid(c) { return ['fruits-vegetables', 'kitchen-essentials', 'personal-care', 'fashion'].includes(c); }
+function isLiquid(c) { return ['dairy-products', 'household-cleaning', 'beverages'].includes(c); }
+function isColorCategory(c) { return ['electronics', 'fashion'].includes(c); }
+function getVariantOptions(c) {
+  if (isColorCategory(c)) return ['White', 'Black', 'Red', 'Blue'];
+  if (isSolid(c)) return ['500g', '1kg'];
+  if (isLiquid(c)) return ['500ml', '1L'];
+  return [];
+}
+
+window.getAdjustedPrice = function(b, v){
+  if (!v) return b;
+  if (v.includes('1kg') || v.includes('1L')) return b * 2;
+  return b;
+}
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('selectedVariants', JSON.stringify(selectedVariants));
+  updateCartCount();
+}
+function updateCartCount() {
+  const count = Object.values(cart).reduce((s, q) => s + q, 0);
+  const el = document.getElementById('cartCount');
+  if (el) el.textContent = count;
+}
+// ===== Main Product Card ==================================================
+function renderProductCard(p, i) {
+  const realIndex = products.findIndex(prod => prod.name === p.name && prod.category === p.category);
+  const o = (categoryOffers[p.category] && categoryOffers[p.category][realIndex % 10]) || null;
+  const b = p.price;
+  const r = p.rating;
+  const v = getVariantOptions(p.category);
+  const f = selectedFilters.pack;
+  const s = f && v.includes(f) ? f : (selectedVariants[p.name] || v[0]);
+  selectedVariants[p.name] = s;
+  const k = uniqueKey(p.name, s);
+  const a = getAdjustedPrice(b, s);
+  const d = o ? Math.floor(a * (o / 100)) : 0;
+  const fPrice = a - d;
+  const q = cart[k] || 0;
+  const old = o ? `<s>₹${a}</s>` : '';
+
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    ${o ? `<div class="discount-tag">${o}% OFF</div>` : ''}
+    <img src="${p.img}" alt="${p.name}">
+    <h3>${p.name}</h3>
+    <select class="variant-select" onchange="updateVariantAndPrice(this,'${p.name}',${b},${o || 0})">
+      ${v.map(opt => `<option value="${opt}" ${opt === s ? 'selected' : ''}>${opt}</option>`).join('')}
+    </select>
+    <p class="price-display">${old} <strong>₹${fPrice}</strong></p>
+    <div class="rating">⭐ ${r}</div>
+    <div class="qty-btns">
+      ${
+        q === 0
+          ? `<button class="add-btn" onclick="increaseQty('${p.name}','${s}')">Add</button>`
+          : `<button onclick="decreaseQty('${p.name}','${s}')">-</button><span>${q}</span><button onclick="increaseQty('${p.name}','${s}')">+</button>`
+      }
+    </div>
+    <p class="delivery-info">Delivery by Tomorrow, 6–8 AM | ₹10 extra for express</p>
+  `;
+  return card;
+}
+
+function updateVariantAndPrice(sel, name, base, offer) {
+  const v = sel.value;
+  selectedVariants[name] = v;
+  const price = getAdjustedPrice(base, v);
+  const discount = offer ? Math.floor(price * offer / 100) : 0;
+  const final = price - discount;
+  sel.nextElementSibling.innerHTML =
+    (offer ? `<s>₹${price}</s> ` : '') + `<strong>₹${final}</strong>`;
+  const btnWrap = sel.nextElementSibling.nextElementSibling.nextElementSibling;
+  const k = uniqueKey(name, v);
+  const q = cart[k] || 0;
+  btnWrap.innerHTML =
+    q === 0
+      ? `<button class="add-btn" onclick="increaseQty('${name}','${v}')">Add</button>`
+      : `<button onclick="decreaseQty('${name}','${v}')">-</button><span>${q}</span><button onclick="increaseQty('${name}','${v}')">+</button>`;
+  saveCart();
+}
+
+// ===== Cart Quantity Handlers ============================================
+function increaseQty(name, variant, isSearch = false) {
+  const k = uniqueKey(name, variant);
+  cart[k] = (cart[k] || 0) + 1;
+  selectedVariants[name] = variant;
+  saveCart();
+  isSearch ? rerenderSearchSuggestions() : showProducts(currentCategory);
+}
+function decreaseQty(name, variant, isSearch = false) {
+  const k = uniqueKey(name, variant);
+  if (cart[k]) {
+    cart[k]--;
+    if (cart[k] <= 0) delete cart[k];
+    saveCart();
+    isSearch ? rerenderSearchSuggestions() : showProducts(currentCategory);
+  }
+}
+// ===== Filter Sidebar =====================================================
+function updateFilters(category, productList) {
+  const sb = document.querySelector('.sidebar');
+  sb.innerHTML = '<h3>Filter By</h3>';
+  sb.innerHTML += `
+    <button onclick="filterTab('all')">All Products</button>
+    <button onclick="filterTab('offer')">All Offer Products</button>
+  `;
+
+  const makeSelect = (label, id, opts, key) => {
+    const g = document.createElement('div');
+    g.className = 'filter-group';
+    g.innerHTML = `
+      <label for="${id}">${label}</label>
+      <select id="${id}" onchange="handleFilterChange('${key}', this.value)">
+        <option value="">Choose ${label}</option>
+        ${opts.map(o => `<option value="${o}" ${selectedFilters[key] === o ? 'selected' : ''}>${o}</option>`).join('')}
+      </select>
+    `;
+    return g;
+  };
+
+  const allProducts = category === 'offer'
+    ? products.filter((p, i) => categoryOffers[p.category] && categoryOffers[p.category][i % 10])
+    : category === 'all'
+    ? products
+    : products.filter(p => p.category === category);
+
+  const prodNames = [...new Set(allProducts.map(p => p.name.split(' - ')[0]))];
+  sb.appendChild(makeSelect('Product', 'productSelect', prodNames, 'product'));
+
+  const filteredByProduct = selectedFilters.product
+    ? allProducts.filter(p => p.name.startsWith(selectedFilters.product + ' - '))
+    : allProducts;
+
+  const brands = [...new Set(filteredByProduct.map(p => p.name.split(' - ')[1]))].filter(Boolean);
+  sb.appendChild(makeSelect('Brand', 'brandSelect', brands, 'brand'));
+
+  const packOpts = selectedFilters.product
+    ? getVariantOptions(filteredByProduct[0]?.category || category)
+    : getVariantOptions(category);
+
+  if (packOpts.length) {
+    sb.appendChild(makeSelect('Pack Size / Color', 'packSelect', packOpts, 'pack'));
+  }
+}
+function handleFilterChange(key, val) {
+  selectedFilters[key] = val;
+  showProducts(currentCategory);
+}
+// ===== Product List Rendering ============================================
+function productMatchesFilters(p) {
+  const [prod, brand] = p.name.split(' - ');
+  const packOk = !selectedFilters.pack || getVariantOptions(p.category).includes(selectedFilters.pack);
+  return (!selectedFilters.product || prod === selectedFilters.product) &&
+         (!selectedFilters.brand || brand === selectedFilters.brand) &&
+         packOk;
+}
+function showProducts(cat) {
+  currentCategory = cat;
+  grid.innerHTML = '';
+  const list =
+    cat === 'all'
+      ? products
+      : cat === 'offer'
+      ? products.filter((p, i) => categoryOffers[p.category] && categoryOffers[p.category][i % 10])
+      : products.filter(p => p.category === cat);
+  let filtered = list.filter(productMatchesFilters);
+
+  function getFinalPrice(p) {
+    const v = selectedVariants[p.name] || getVariantOptions(p.category)[0];
+    const base = p.price;
+    const adj = getAdjustedPrice(base, v);
+    const realIndex = products.findIndex(prod => prod.name === p.name && prod.category === p.category);
+    const offer = categoryOffers[p.category]?.[realIndex % 10] || 0;
+    const discount = Math.floor(adj * offer / 100);
+    return adj - discount;
+  }
+
+  filtered.sort((a, b) => {
+    const aPrice = getFinalPrice(a);
+    const bPrice = getFinalPrice(b);
+    if (sortPreference === 'Price: Low to High') return aPrice - bPrice;
+    if (sortPreference === 'Price: High to Low') return bPrice - aPrice;
+    return 0;
+  });
+
+  updateFilters(cat, list);
+  filtered.forEach((p, i) => grid.appendChild(renderProductCard(p, i)));
+  const title = document.getElementById('categoryTitle');
+  if (title) title.textContent = categoryNames[cat] || 'All Products';
+}
+function filterTab(cat) {
+  selectedFilters = {product: '', brand: '', pack: ''};
+  showProducts(cat);
+}
+
+// ===== Search Suggestions ===============================================
+function rerenderSearchSuggestions() {
+  const term = searchInput.value.toLowerCase();
+  searchDropdown.innerHTML = '';
+  if (!term) {
+    searchDropdown.style.display = 'none';
+    return;
+  }
+  const matched = products.filter(p => p.name.toLowerCase().includes(term)).slice(0, 6);
+  matched.forEach((p, i) => {
+    const o = (categoryOffers[p.category] && categoryOffers[p.category][i % 10]) || null;
+    const b = p.price;
+    const v = getVariantOptions(p.category);
+    const s = selectedVariants[p.name] || v[0];
+    const k = uniqueKey(p.name, s);
+    const a = getAdjustedPrice(b, s);
+    const d = o ? Math.floor(a * o / 100) : 0;
+    const f = a - d;
+    const offerTag = o ? `<div class="search-offer-tag">${o}% OFF</div>` : '';
+    const variantHTML = v.map(opt => `<option value="${opt}" ${opt === s ? 'selected' : ''}>${opt}</option>`).join('');
+    
+    const item = document.createElement('div');
+    item.className = 'search-suggestion';
+    item.innerHTML = `
+      <div class="search-image-section">
+        <img src="${p.img}" alt="${p.name}">
+        ${offerTag}
+      </div>
+      <div class="search-name">${p.name}</div>
+      <div class="search-price-section">
+        ${o ? `<span class="strike">₹${a}</span>` : ''} <span class="final">₹${f}</span>
+      </div>
+      <select class="variant-select" onchange="handleSearchVariantChange(this,'${p.name}',${b},${o || 0})">
+        ${variantHTML}
+      </select>
+      <div class="qty-btns">
+        ${
+          cart[k]
+            ? `<button onclick="decreaseQty('${p.name}','${s}',true)">-</button><span>${cart[k]}</span><button onclick="increaseQty('${p.name}','${s}',true)">+</button>`
+            : `<button class="add-btn" onclick="increaseQty('${p.name}','${s}',true)">Add</button>`
+        }
+      </div>
+    `;
+    searchDropdown.appendChild(item);
+  });
+  searchDropdown.style.display = matched.length ? 'block' : 'none';
+}
+
+function handleSearchVariantChange(sel, name, base, offer) {
+  const v = sel.value;
+  selectedVariants[name] = v;
+  const priceSec = sel.previousElementSibling;
+  const price = getAdjustedPrice(base, v);
+  const disc = offer ? Math.floor(price * offer / 100) : 0;
+  const final = price - disc;
+  priceSec.innerHTML =
+    (offer ? `<span class="strike">₹${price}</span> ` : '') + `<span class="final">₹${final}</span>`;
+  const btnWrap = sel.nextElementSibling;
+  const k = uniqueKey(name, v);
+  const q = cart[k] || 0;
+  btnWrap.innerHTML =
+    q === 0
+      ? `<button class="add-btn" onclick="increaseQty('${name}','${v}',true)">Add</button>`
+      : `<button onclick="decreaseQty('${name}','${v}',true)">-</button><span>${q}</span><button onclick="increaseQty('${name}','${v}',true)">+</button>`;
+  saveCart();
+}
+// ===== Initial Setup & Event Listeners ===================================
+window.addEventListener('load', () => {
+  updateCartCount();
+  showProducts('all');
+});
+searchInput.addEventListener('input', rerenderSearchSuggestions);
+searchInput.addEventListener('focus', rerenderSearchSuggestions);
+document.addEventListener('click', e => {
+  if (
+    !searchDropdown.contains(e.target) &&
+    e.target !== searchInput &&
+    !e.target.closest('.qty-btns') &&
+    !e.target.closest('.search-suggestion')
+  ) {
+    searchDropdown.style.display = 'none';
+  }
+});
+
+document.querySelector('.sort-box').addEventListener('change', e => {
+  sortPreference = e.target.value;
+  showProducts(currentCategory);
+});
+
+window.staticPrices = {};
+products.forEach(p => {
+  window.staticPrices[p.name] = p.price;
+});
+
+
+
+
+
+
+
+
+
+//checkout.js
+window.products = [
+  { category: 'dairy-products', name: 'Milk - Aavin', img: 'images/dairy-products/milk/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Milk - Heritage', img: 'images/dairy-products/milk/heritage_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Curd - Aavin', img: 'images/dairy-products/curd/aavin_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Curd - Hatsun', img: 'images/dairy-products/curd/hatsun_f2.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Butter - Amul', img: 'images/dairy-products/butter/amul_f1.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Butter - Britannia', img: 'images/dairy-products/butter/britannia_f2.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Ghee - Aavin', img: 'images/dairy-products/ghee/aavin_f1.jpg', price: 60, rating: 4.0 },
+  { category: 'dairy-products', name: 'Ghee - GRB', img: 'images/dairy-products/ghee/grb_f2.jpg', price: 70, rating: 4.3 },
+  { category: 'dairy-products', name: 'Cheese - Amul', img: 'images/dairy-products/cheese/amul_f1.jpg', price: 80, rating: 4.6 },
+  { category: 'dairy-products', name: 'Cheese - Britannia', img: 'images/dairy-products/cheese/britannia_f2.jpg', price: 60, rating: 4.0 },
+
+  // Household Cleaning
+  { category: 'household-cleaning', name: 'Floor Cleaner - Lizol', img: 'images/household-cleaning/floor_cleaner/lizol_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Floor Cleaner - Harpic', img: 'images/household-cleaning/floor_cleaner/harpic_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Vim', img: 'images/household-cleaning/dishwash_liquid/vim_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Dishwash Liquid - Pril', img: 'images/household-cleaning/dishwash_liquid/pril_f2.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Harpic', img: 'images/household-cleaning/toilet_cleaner/harpic_f1.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Toilet Cleaner - Domex', img: 'images/household-cleaning/toilet_cleaner/domex_f2.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Surf Excel', img: 'images/household-cleaning/detergent_powder/surf_excel_f1.jpg', price: 65, rating: 4.1 },
+  { category: 'household-cleaning', name: 'Detergent Powder - Ariel', img: 'images/household-cleaning/detergent_powder/ariel_f2.jpg', price: 75, rating: 4.4 },
+  { category: 'household-cleaning', name: 'Room Freshener - Odonil', img: 'images/household-cleaning/room_freshener/odonil_f1.jpg', price: 85, rating: 4.7 },
+  { category: 'household-cleaning', name: 'Room Freshener - Godrej', img: 'images/household-cleaning/room_freshener/godrej_f2.jpg', price: 65, rating: 4.1 },
+
+  // Fruits & Vegetables
+  { category: 'fruits-vegetables', name: 'Apple - Local Farm', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 120, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Apple - FreshPick', img: 'images/fruits-vegetables/apple/local_fresh.f1.jpg', price: 125, rating: 4.4 },
+  { category: 'fruits-vegetables', name: 'Banana - Local Farm', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 45, rating: 4.0 },
+  { category: 'fruits-vegetables', name: 'Banana - FreshPick', img: 'images/fruits-vegetables/banana/local_fresh.f1.jpg', price: 48, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Tomato - Local Farm', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 30, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Tomato - FreshPick', img: 'images/fruits-vegetables/tomato/local_fresh.f1.jpg', price: 32, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Potato - Local Farm', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 35, rating: 4.2 },
+  { category: 'fruits-vegetables', name: 'Potato - FreshPick', img: 'images/fruits-vegetables/potato/local_fresh.f1.jpg', price: 38, rating: 4.3 },
+  { category: 'fruits-vegetables', name: 'Carrot - Local Farm', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 50, rating: 4.1 },
+  { category: 'fruits-vegetables', name: 'Carrot - FreshPick', img: 'images/fruits-vegetables/carrot/local_fresh.f1.jpg', price: 52, rating: 4.2 },
+  // Personal Care
+  { category: 'personal-care', name: 'Shampoo - Dove', img: 'images/personal-care/shampoo/dove_f1.jpg', price: 95, rating: 4.4 },
+  { category: 'personal-care', name: 'Shampoo - Clinic Plus', img: 'images/personal-care/shampoo/clinic_plus_f2.jpg', price: 85, rating: 4.2 },
+  { category: 'personal-care', name: 'Soap - Lux', img: 'images/personal-care/soap/lux_f1.jpg', price: 35, rating: 4.1 },
+  { category: 'personal-care', name: 'Soap - Dove', img: 'images/personal-care/soap/dove_f2.jpg', price: 45, rating: 4.3 },
+  { category: 'personal-care', name: 'Toothpaste - Colgate', img: 'images/personal-care/toothpaste/colgate_f1.jpg', price: 55, rating: 4.4 },
+  { category: 'personal-care', name: 'Toothpaste - Pepsodent', img: 'images/personal-care/toothpaste/pepsodent_f2.jpg', price: 52, rating: 4.2 },
+  { category: 'personal-care', name: 'Face Wash - Himalaya', img: 'images/personal-care/face_wash/himalaya_f1.jpg', price: 60, rating: 4.3 },
+  { category: 'personal-care', name: 'Face Wash - Garnier', img: 'images/personal-care/face_wash/garnier_f2.jpg', price: 65, rating: 4.4 },
+  { category: 'personal-care', name: 'Body Lotion - Nivea', img: 'images/personal-care/body_lotion/nivea_f1.jpg', price: 90, rating: 4.5 },
+  { category: 'personal-care', name: 'Body Lotion - Vaseline', img: 'images/personal-care/body_lotion/vaseline_f2.jpg', price: 95, rating: 4.6 },
+
+  // Kitchen Essentials
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Fortune', img: 'images/kitchen-essentials/cooking_oil/fortune_f1.jpg', price: 110, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Cooking Oil - Gold Winner', img: 'images/kitchen-essentials/cooking_oil/gold_winner_f2.jpg', price: 115, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Rice - India Gate', img: 'images/kitchen-essentials/rice/india_gate_f1.jpg', price: 160, rating: 4.5 },
+  { category: 'kitchen-essentials', name: 'Rice - Ponni', img: 'images/kitchen-essentials/rice/ponni_f2.jpg', price: 150, rating: 4.3 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Aashirvaad', img: 'images/kitchen-essentials/wheat_flour/aashirvaad_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'kitchen-essentials', name: 'Wheat Flour - Pillsbury', img: 'images/kitchen-essentials/wheat_flour/pillsbury_f2.jpg', price: 125, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Masala - Sakthi', img: 'images/kitchen-essentials/masala/sakthi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'kitchen-essentials', name: 'Masala - Aachi', img: 'images/kitchen-essentials/masala/aachi_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'kitchen-essentials', name: 'Salt - Tata', img: 'images/kitchen-essentials/salt/tata_f1.jpg', price: 20, rating: 4.0 },
+  { category: 'kitchen-essentials', name: 'Salt - Aashirvaad', img: 'images/kitchen-essentials/salt/aashirvaad_f2.jpg', price: 22, rating: 4.1 },
+
+  // Electronics
+  { category: 'electronics', name: 'Mobile Phone - Samsung', img: 'images/electronics/mobile_phone/samsung_f1.jpg', price: 12000, rating: 4.5 },
+  { category: 'electronics', name: 'Mobile Phone - Redmi', img: 'images/electronics/mobile_phone/redmi_f2.jpg', price: 10000, rating: 4.4 },
+  { category: 'electronics', name: 'Headphones - Boat', img: 'images/electronics/headphones/boat_f1.jpg', price: 999, rating: 4.3 },
+  { category: 'electronics', name: 'Headphones - JBL', img: 'images/electronics/headphones/jbl_f2.jpg', price: 1499, rating: 4.4 },
+  { category: 'electronics', name: 'Power Bank - Mi', img: 'images/electronics/power_bank/mi_f1.jpg', price: 899, rating: 4.2 },
+  { category: 'electronics', name: 'Power Bank - Realme', img: 'images/electronics/power_bank/realme_f2.jpg', price: 950, rating: 4.3 },
+  { category: 'electronics', name: 'USB Cable - Portronics', img: 'images/electronics/usb_cable/portronics_f1.jpg', price: 199, rating: 4.0 },
+  { category: 'electronics', name: 'USB Cable - Mi', img: 'images/electronics/usb_cable/mi_f2.jpg', price: 180, rating: 4.1 },
+  { category: 'electronics', name: 'Bluetooth Speaker - JBL', img: 'images/electronics/bluetooth_speaker/jbl_f1.jpg', price: 2500, rating: 4.5 },
+  { category: 'electronics', name: 'Bluetooth Speaker - Boat', img: 'images/electronics/bluetooth_speaker/boat_f2.jpg', price: 2200, rating: 4.3 },
+
+  // Fashion
+  { category: 'fashion', name: 'T-shirt - Puma', img: 'images/fashion/t_shirt/puma_f1.jpg', price: 699, rating: 4.2 },
+  { category: 'fashion', name: 'T-shirt - Adidas', img: 'images/fashion/t_shirt/adidas_f2.jpg', price: 749, rating: 4.3 },
+  { category: 'fashion', name: 'Jeans - Levis', img: 'images/fashion/jeans/levis_f1.jpg', price: 1999, rating: 4.5 },
+  { category: 'fashion', name: 'Jeans - Wrangler', img: 'images/fashion/jeans/wrangler_f2.jpg', price: 1899, rating: 4.4 },
+  { category: 'fashion', name: 'Sneakers - Nike', img: 'images/fashion/sneakers/nike_f1.jpg', price: 2999, rating: 4.6 },
+  { category: 'fashion', name: 'Sneakers - Puma', img: 'images/fashion/sneakers/puma_f2.jpg', price: 2899, rating: 4.5 },
+  { category: 'fashion', name: 'Jacket - Allen Solly', img: 'images/fashion/jacket/allen_solly_f1.jpg', price: 3499, rating: 4.4 },
+  { category: 'fashion', name: 'Jacket - Peter England', img: 'images/fashion/jacket/peter_england_f2.jpg', price: 3299, rating: 4.3 },
+  { category: 'fashion', name: 'Sunglasses - Fastrack', img: 'images/fashion/sunglasses/fastrack_f1.jpg', price: 999, rating: 4.2 },
+  { category: 'fashion', name: 'Sunglasses - Ray-Ban', img: 'images/fashion/sunglasses/rayban_f2.jpg', price: 2499, rating: 4.6 },
+
+  // Beverages
+  { category: 'beverages', name: 'Tea - Tata Tea', img: 'images/beverages/tea/tata_tea_f1.jpg', price: 120, rating: 4.3 },
+  { category: 'beverages', name: 'Tea - Red Label', img: 'images/beverages/tea/red_label_f2.jpg', price: 125, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Bru', img: 'images/beverages/coffee/bru_f1.jpg', price: 130, rating: 4.4 },
+  { category: 'beverages', name: 'Coffee - Nescafe', img: 'images/beverages/coffee/nescafe_f2.jpg', price: 135, rating: 4.5 },
+  { category: 'beverages', name: 'Fruit Juice - Tropicana', img: 'images/beverages/fruit_juice/tropicana_f1.jpg', price: 90, rating: 4.2 },
+  { category: 'beverages', name: 'Fruit Juice - Real', img: 'images/beverages/fruit_juice/real_f2.jpg', price: 95, rating: 4.3 },
+  { category: 'beverages', name: 'Soft Drink - Pepsi', img: 'images/beverages/soft_drink/pepsi_f1.jpg', price: 40, rating: 4.1 },
+  { category: 'beverages', name: 'Soft Drink - Coca-Cola', img: 'images/beverages/soft_drink/coca_cola_f2.jpg', price: 42, rating: 4.2 },
+  { category: 'beverages', name: 'Energy Drink - Red Bull', img: 'images/beverages/energy_drink/red_bull_f1.jpg', price: 110, rating: 4.5 },
+  { category: 'beverages', name: 'Energy Drink - Monster', img: 'images/beverages/energy_drink/monster_f2.jpg', price: 115, rating: 4.6 }
+];
+
+window.categoryOffers = {
+  'dairy-products': {0: 28, 1: 9, 4: 8, 6: 28, 9: 26},
+  'household-cleaning': {0: 21, 1: 11, 6: 12, 7: 24, 8: 7},
+  'fruits-vegetables': {0: 27, 3: 18, 5: 12, 6: 19, 8: 22},
+  'personal-care': {0: 15, 1: 9, 4: 18, 6: 13, 9: 27},
+  'kitchen-essentials': {0: 16, 1: 32, 3: 8, 5: 16, 9: 24},
+  'electronics': {0: 17, 4: 34, 7: 7, 8: 14, 9: 22},
+  'fashion': {0: 14, 3: 12, 5: 26, 8: 29, 9: 6},
+  'beverages': {1: 19, 2: 10, 3: 25, 8: 16, 9: 31}
+};
+
+let cart = JSON.parse(localStorage.getItem('cart')) || {};
+let selectedVariants = JSON.parse(localStorage.getItem('selectedVariants')) || {};
+let routine = JSON.parse(localStorage.getItem('routine')) || {};
+
+const container = document.getElementById('checkout-products');
+
+function saveAll() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('selectedVariants', JSON.stringify(selectedVariants));
+  localStorage.setItem('routine', JSON.stringify(routine));
+}
+
+function uniqueKey(name, variant) {
+  return `${name}|${variant}`;
+}
+
+function getVariantOptions(c) {
+  if (['electronics', 'fashion'].includes(c)) return ['White', 'Black', 'Red', 'Blue'];
+  if (['fruits-vegetables', 'kitchen-essentials', 'personal-care', 'fashion'].includes(c)) return ['500g', '1kg'];
+  if (['dairy-products', 'household-cleaning', 'beverages'].includes(c)) return ['500ml', '1L'];
+  return [];
+}
+
+function getAdjustedPrice(base, variant) {
+  if (variant.includes('1kg') || variant.includes('1L')) return base * 2;
+  return base;
+}
+function renderCheckoutCards() {
+  const container = document.getElementById('checkout-products');
+  const emptyMsg = document.getElementById('empty-cart-message');
+  container.innerHTML = '';
+
+  const keys = Object.keys(cart);
+
+  if (keys.length === 0) {
+    emptyMsg.style.display = 'block';
+    return;
+  } else {
+    emptyMsg.style.display = 'none';
+  }
+
+  keys.forEach(key => {
+    const [name, variant] = key.split('|');
+    const p = products.find(prod => prod.name === name);
+    if (!p) return;
+
+    const category = p.category;
+    const base = p.price;
+    const offer = (categoryOffers[category] || {})[products.indexOf(p) % 10] || 0;
+    const adjusted = getAdjustedPrice(base, variant);
+    const discount = Math.floor(adjusted * offer / 100);
+    const final = adjusted - discount;
+    const oldPrice = offer ? `<s>₹${adjusted}</s>` : '';
+    const qty = cart[key];
+    const currentRoutine = routine[key] || 'None';
+
+    const card = document.createElement('div');
+    card.className = 'checkout-card';
+    card.innerHTML = `
+      <input type="checkbox" class="discard-checkbox" data-key="${key}">
+      <div style="position: relative;">
+        ${offer ? `<span class="checkout-offer">${offer}% OFF</span>` : ''}
+        <img src="${p.img}" alt="${name}" class="checkout-img">
+      </div>
+      <div class="checkout-info">
+        <h3>${name}</h3>
+        <p>Variant: ${variant}</p>
+        <p class="checkout-price">${oldPrice} <strong>₹${final}</strong></p>
+        <div class="checkout-routine">
+          ${['Daily','Weekly','Monthly','None'].map(f => `
+            <button class="routine-btn ${currentRoutine === f ? 'active' : ''}" onclick="setRoutine('${key}', '${f}')">${f}</button>
+          `).join('')}
+        </div>
+        <div class="qty-btns">
+          <button onclick="changeQty('${key}', -1)">−</button>
+          <span>${qty}</span>
+          <button onclick="changeQty('${key}', 1)">+</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+
+function changeQty(key, delta) {
+  if (cart[key]) {
+    cart[key] += delta;
+    if (cart[key] <= 0) {
+      delete cart[key];
+      delete routine[key];
+    }
+    saveAll();
+    renderCheckoutCards();
+  }
+}
+
+function setRoutine(key, freq) {
+  if (freq === 'None') {
+    delete routine[key];
+  } else {
+    routine[key] = freq;
+  }
+  saveAll();
+  renderCheckoutCards();
+}
+
+document.getElementById('add-more-btn')?.addEventListener('click', () => {
+  window.location.href = 'product.html';
+});
+
+document.getElementById('discard-selected-btn')?.addEventListener('click', () => {
+  const checked = document.querySelectorAll('.discard-checkbox:checked');
+  if (checked.length && confirm('Are you sure you want to discard selected products?')) {
+    checked.forEach(cb => {
+      const key = cb.dataset.key;
+      delete cart[key];
+      delete routine[key];
+    });
+    saveAll();
+    renderCheckoutCards();
+    updateCartCount(); // ✅ update after render
+
+  }
+});
+
+document.getElementById('discard-all-btn')?.addEventListener('click', () => {
+  if (confirm('Are you sure you want to discard all products?')) {
+    cart = {};
+    routine = {};
+    saveAll();
+    renderCheckoutCards();
+    updateCartCount(); // ✅ update after render
+
+  }
+});
+
+renderCheckoutCards();
+
+const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
+
+// ✅ Render live search suggestions
+function rerenderSearchSuggestions() {
+  const term = searchInput.value.toLowerCase();
+  searchDropdown.innerHTML = '';
+  if (!term) {
+    searchDropdown.style.display = 'none';
+    return;
+  }
+
+  const matched = products.filter(p =>
+    (p.name + ' ' + (p.brand || '')).toLowerCase().includes(term)
+  ).slice(0, 6);
+
+  matched.forEach((p, i) => {
+    const o = (categoryOffers[p.category] && categoryOffers[p.category][i % 10]) || null;
+    const b = p.price;
+    const v = getVariantOptions(p.category);
+    const s = selectedVariants[p.name] || v[0];
+    const k = uniqueKey(p.name, s);
+    const a = getAdjustedPrice(b, s);
+    const d = o ? Math.floor(a * o / 100) : 0;
+    const f = a - d;
+    const offerTag = o ? `<div class="search-offer-tag">${o}% OFF</div>` : '';
+    const variantHTML = v.map(opt => `<option value="${opt}" ${opt === s ? 'selected' : ''}>${opt}</option>`).join('');
+
+    const item = document.createElement('div');
+    item.className = 'search-suggestion';
+    item.innerHTML = `
+      <div class="search-image-section">
+        <img src="${p.img}" alt="${p.name}">
+        ${offerTag}
+      </div>
+      <div class="search-info-group">
+        <div class="search-name">${p.name}</div>
+        <div class="search-price-section">
+          ${o ? `<span class="strike">₹${a}</span>` : ''} <span class="final">₹${f}</span>
+        </div>
+      </div>
+      <div class="search-action-group">
+        <select class="variant-select" onchange="handleSearchVariantChange(this,'${p.name}',${b},${o || 0})">
+          ${variantHTML}
+        </select>
+        <div class="qty-btns1">
+          ${
+            cart[k]
+              ? `<button onclick="decreaseQty('${p.name}','${s}',true)">-</button><span>${cart[k]}</span><button onclick="increaseQty('${p.name}','${s}',true)">+</button>`
+              : `<button class="add-btn" onclick="increaseQty('${p.name}','${s}',true)">Add</button>`
+          }
+        </div>
+      </div>
+    `;
+
+    searchDropdown.appendChild(item);
+  });
+
+  searchDropdown.style.display = matched.length ? 'block' : 'none';
+}
+
+// ✅ Trigger on input
+searchInput?.addEventListener('input', rerenderSearchSuggestions);
+searchInput?.addEventListener('focus', rerenderSearchSuggestions);
+
+document.addEventListener('click', e => {
+  if (
+    !searchDropdown.contains(e.target) &&
+    e.target !== searchInput &&
+    !e.target.closest('.search-suggestion')
+  ) {
+    searchDropdown.style.display = 'none';
+  }
+});
+
+// ✅ Update price + quantity for selected variant
+function handleSearchVariantChange(sel, name, base, offer) {
+  const v = sel.value;
+  selectedVariants[name] = v;
+
+  const wrapper = sel.closest('.search-suggestion');
+  const priceSec = wrapper.querySelector('.search-price-section');
+  const btnWrap = wrapper.querySelector('.qty-btns1');
+
+  const price = getAdjustedPrice(base, v);
+  const disc = offer ? Math.floor((price * offer) / 100) : 0;
+  const final = price - disc;
+
+  priceSec.innerHTML =
+    (offer ? `<span class="strike">₹${price}</span>` : '') +
+    ` <span class="final">₹${final}</span>`;
+
+  const k = uniqueKey(name, v);
+  const q = cart[k] || 0;
+
+  btnWrap.innerHTML =
+    q === 0
+      ? `<button class="add-btn" onclick="increaseQty('${name}','${v}',true)">Add</button>`
+      : `<button onclick="decreaseQty('${name}','${v}',true)">-</button><span>${q}</span><button onclick="increaseQty('${name}','${v}',true)">+</button>`;
+
+  saveAll();
+}
+
+
+// ✅ Add quantity
+function increaseQty(name, variant, rerenderSearch) {
+  const key = uniqueKey(name, variant);
+  cart[key] = (cart[key] || 0) + 1;
+  saveAll();
+  renderCheckoutCards?.();
+  updateCartCount?.();
+  if (rerenderSearch) rerenderSearchSuggestions();
+}
+
+// ✅ Decrease quantity
+function decreaseQty(name, variant, rerenderSearch) {
+  const key = uniqueKey(name, variant);
+  if (cart[key]) {
+    cart[key]--;
+    if (cart[key] <= 0) {
+      delete cart[key];
+      delete routine[key];
+    }
+    saveAll();
+    renderCheckoutCards?.();
+    updateCartCount?.();
+    if (rerenderSearch) rerenderSearchSuggestions();
+  }
+}
+
+//=======card count ==============
+function updateCartCount() {
+  const total = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+  const el = document.getElementById('cartCount');
+  if (el) el.textContent = total;
+}
+
+updateCartCount(); // ✅ Call once after everything is rendered
+

@@ -1,0 +1,714 @@
+/* ---index-style.css-- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, a, select, button, span, div, input {
+  font-family: 'Poppins', sans-serif !important;
+}
+/* ✅ Fix Sidebar Scrolling Without UI Change */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* --- HEADER WRAPPER --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* --- LOGO --- */
+.header-left .logo {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.green {
+  color: #4CAF50;
+}
+
+.orange {
+  color: #ff4d4f;
+}
+/* === New Routine Dropdown Variant === */
+.routine2 {
+  position: relative;
+}
+
+.routine2-label {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+  width: 170px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.routine2-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  z-index: 999;
+  font-size: 18px;
+  text-align: center;
+  width: 200px; /* Adjusted for better dropdown look */
+  display: none;
+}
+
+.routine2:hover .routine2-content,
+.routine2.open .routine2-content {
+  display: block;
+}
+
+.routine2-content a {
+  display: block;
+  padding: 10px 14px;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.3s ease, padding-left 0.2s;
+  font-weight:500;
+}
+
+.routine2-content a:hover {
+  background-color: #e0f7e9;
+  color: #2e7d32; /* Optional */
+  padding-left: 18px; /* Optional animation like settings */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+/* --- RIGHT: PINCODE + CART + SETTINGS --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.location {
+  font-size: 18px;
+  color: #444;
+}
+
+/* Cart */
+.cart-icon {
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+/* Settings Dropdown */
+.settings {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 20px;
+}
+
+
+/* --- Responsive (Mobile Fix) --- */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-center {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+}
+
+/* --- CATEGORY FILTER (Sticky Top-Nav) --- */
+.top-nav {
+  background-color: #fff;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 105px; /* height of header */
+  z-index: 999;
+}
+.dropdown-btn {
+  background: #e3f2fd;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-right: 20px;
+  color: #0277bd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 10;
+  top: 40px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0f7fa;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-tabs a {
+  margin-right: 16px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-tabs a:hover {
+  background-color: #e3fce9;
+  color: #222;
+}
+
+/* --- BREADCRUMB (Sticky) --- */
+.breadcrumb {
+  background-color: #f1f1f1;
+  padding: 12px 24px;
+  font-size: 14px;
+  position: sticky;
+  top: 160px; /* header + nav combined */
+  z-index: 998;
+}
+
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.categories {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.categories h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.category-card {
+  background: #f0f4f8;
+  padding: 20px;
+  width: 180px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #333;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.category-card:hover {
+  background-color: #d0e8cc;
+  transform: scale(1.02);
+}
+
+/* ---------- FOOTER STYLES ---------- */
+.site-footer {
+  margin-top: 60px;
+  font-family: 'Poppins', sans-serif;
+  background: #4CAF50;
+  color: white;
+  text-align: center;
+  width: 1900px;
+  margin-left: -10px;
+  height: 1px;
+}
+
+.footer-top {
+  background-color: #4CAF50;
+  padding: 20px;
+  width: 1900px;
+  margin-left: -35px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: color 0.3s;
+  
+}
+
+.footer-links a:hover {
+  color: #ffcdd2;
+  
+}
+
+.footer-contact {
+  background-color: #ff4d4f;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px; 
+  margin-top: 20px;
+  width: 1900px;
+}
+
+.footer-bottom {
+  background-color: #388e3c;
+  padding: 14px 0;
+  font-size: 14px;
+  width: 1950px;
+  margin-left: -25px;
+  
+}
+
+/* -------- 🔽 Search Dropdown Wrapper -------- */
+/* ✅ Fix search dropdown container alignment */
+.header-center1 {
+  position: relative; /* Needed for dropdown absolute positioning */
+}
+
+/* ✅ Updated Search Dropdown for proper placement */
+.search-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 625px;
+  max-height: 350px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  margin-left: 80px;
+} 
+
+/* ✅ Mobile Responsive: Adjust width and position */
+@media (max-width: 768px) {
+  .search-dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+}
+
+
+
+/* -------- 🔽 Search Suggestion Item -------- */
+.search-suggestion {
+  display: grid;
+  grid-template-columns: 60px 160px 90px 90px 110px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.search-suggestion:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Image Section */
+.search-image-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-image-section img {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Offer Badge */
+.search-offer-tag {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4f;
+  color: white;
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.search-name {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* Price Display Section */
+.search-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+
+.search-price-section .strike {
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.search-price-section .final {
+  font-weight: bold;
+  color: #333;
+}
+
+.variant-select {
+  width: 100%;
+  height: 30px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* Quantity Controls */
+.qty-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+
+.qty-btns button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.qty-btns .add-btn {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  font-weight: 500;
+  margin-top: -10px;
+  
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-dropdown {
+    width: 90vw;
+    left: 5vw;
+  }
+
+  .search-suggestion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-block {
+    flex-direction: row;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .search-routine-settings {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav, .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-dropdown {
+    width: 95%;
+    left: 2.5%;
+  }
+}
+
+/* ---------- HOME PAGE PRODUCT GRID & CARD ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch; /* ✅ Force row cards same height */
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch; /* ✅ Force row cards same height */
+}
+
+.product-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-sizing: border-box; /* ✅ Ensures padding doesn't break size */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  height: auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 6px 0 8px;
+  color: #222;
+  min-height: 38px;
+}
+
+.variant-select {
+  margin: 6px 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  width: 100%;
+}
+
+.product-card .price-display {
+  font-weight: bold;
+  color: #4CAF50;
+  margin: 6px 0;
+  min-height: 22px;
+}
+
+.product-card .rating {
+  font-size: 13px;
+  color: #ffa000;
+  margin-bottom: 8px;
+}
+
+.product-card .add-btn,
+.product-card .quantity-control {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.qty-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.qty-btns button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.discount-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff5252;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.delivery-info {
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.sort-box {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding-right: 30px;
+  margin-right: 25px;
+  margin-top: 40px;
+}
+
+/* On hover border color */
+.sort-box:hover {
+  border-color: #388e3c;
+}
+
+/* On focus (when opened) */
+.sort-box:focus {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 5px rgba(238, 26, 26, 0.6);
+}
+/* Force custom look inside open options (for WebKit browsers like Chrome, Edge) */
+.sort-box option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* Simulate hover behavior inside options using this trick */
+.sort-box option:hover,
+.sort-box option:checked {
+  background-color: #f1f8e9; /* Light green highlight */
+  color: #4CAF50;
+}
+

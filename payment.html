@@ -1,0 +1,112 @@
+<!--payment.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DailyMart — Payment</title>
+  <link rel="stylesheet" href="css/index-style.css" />
+  <link rel="stylesheet" href="css/payment-style.css" />
+</head>
+<body>
+
+  <!-- ✅ HEADER (Same as Home/Product Page) -->
+  <header class="main-header">
+    <div class="header-left">
+      <h1 class="logo">
+        <span class="green">Daily</span><span class="orange">Mart</span>
+      </h1>
+    </div>
+
+  
+
+    <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+      <span class="location">📍 600003, Chennai</span>
+      <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+      <div class="settings">
+        <span class="profile-icon" onclick="handleSettingsClick()" title="Settings">⚙️</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ✅ Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a> / <a href="payment.html">Payment</a>
+  </div>
+
+  <main class="payment-main">
+    <h1>💳 Payment Details</h1>
+
+    <!-- ✅ Cart Summary -->
+    <div id="orderSummary" class="summary-box">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- ✅ Payment Method -->
+    <h3>Select Payment Method</h3>
+    <select id="paymentMethod" class="payment-dropdown">
+      <option value="card">Card</option>
+      <option value="wallet">Wallet</option>
+      <option value="upi">UPI</option>
+    </select>
+
+    <br><br>
+    <button onclick="confirmPayment()" class="confirm-btn">✅ Confirm Payment</button>
+  </main>
+
+  <!-- ✅ FOOTER (Same as Other Pages) -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-links">
+        <a href="#">About Us</a> |
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        📧 support@dailymart.com | 📞 +91-9876543210
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 DailyMart — All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- ✅ Script -->
+  <script src="js/payment.js"></script>
+  <script>
+    function isLoggedIn() {
+      return !!localStorage.getItem('user');
+    }
+
+    function redirectToLoginWithRoutine(routineType) {
+      const redirectUrl = `checkout.html?routine=${routineType}`;
+      localStorage.setItem('loginRedirect', redirectUrl);
+      window.location.href = 'login.html';
+    }
+
+    // ✅ Routine login protection
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.routine2-content a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const type = e.target.dataset.value;
+          if (!isLoggedIn()) {
+            redirectToLoginWithRoutine(type);
+          } else {
+            window.location.href = `checkout.html?routine=${type}`;
+          }
+        });
+      });
+    });
+
+    // ✅ Settings icon login protection
+    function handleSettingsClick() {
+      if (!isLoggedIn()) {
+        localStorage.setItem('loginRedirect', 'settings.html');
+        window.location.href = 'login.html';
+      } else {
+        window.location.href = 'settings.html';
+      }
+    }
+  </script>
+</body>
+</html>
