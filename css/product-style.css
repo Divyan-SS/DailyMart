@@ -30,6 +30,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, select, button, span, div, input {
   justify-content: center;
   margin-left: 300px;
   gap : 50px;
+  
 }
 
 /* Search Input */
@@ -306,3 +307,27 @@ footer {
 }
 
 
+/*---product card routine buttons---*/
+
+.routine-wrap {
+
+  margin-top: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.routine-btn {
+  padding: 3px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+.routine-btn.selected {
+  background: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+}

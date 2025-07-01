@@ -91,55 +91,61 @@
   <!-- ✅ JS Logic -->
   <script src="js/checkout.js"></script>
 
-  <!-- ✅ Login Protection Script -->
-  <script>
-    function isLoggedIn() {
-      return !!localStorage.getItem('user');
-    }
+  <!-- Inside: <script> -->
+<script>
+  function isLoggedIn() {
+    return !!localStorage.getItem('user');
+  }
 
-    function redirectToLoginWithResume(target) {
-      localStorage.setItem('loginRedirect', target);
-      window.location.href = 'login.html';
-    }
+  function redirectToLoginWithResume(target) {
+    localStorage.setItem('loginRedirect', target);
+    window.location.href = 'login.html';
+  }
 
-    // Routine click protection
-    document.querySelectorAll('.routine-content a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const type = e.target.dataset.value;
-        const target = `checkout.html?routine=${type}`;
-        if (!isLoggedIn()) {
-          redirectToLoginWithResume(target);
-        } else {
-          window.location.href = target;
-        }
-      });
-    });
-
-    // Proceed to Pay protection
-    function proceedToPay() {
+  // ✅ Routine option click — updated: removed alert, only redirect
+  document.querySelectorAll('.routine-content a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const type = e.target.dataset.value;
+      const target = `checkout.html?routine=${type}`;
       if (!isLoggedIn()) {
-        redirectToLoginWithResume('payment.html');
+        redirectToLoginWithResume(target);
       } else {
-        window.location.href = 'payment.html';
-      }
-    }
-
-    // Settings icon login check
-    document.getElementById('settingsBtn').addEventListener('click', () => {
-      if (!isLoggedIn()) {
-        redirectToLoginWithResume('settings.html');
-      } else {
-        window.location.href = 'settings.html';
+        window.location.href = target; // ⛔️ Removed alert here
       }
     });
+  });
 
-    function onLoginSuccess() {
-      localStorage.setItem('user', 'true');
-      const redirect = localStorage.getItem('loginRedirect') || 'index.html';
-      localStorage.removeItem('loginRedirect');
-      window.location.href = redirect;
+  // ✅ Proceed to Pay protection — alert remains here (only in routine case)
+  function proceedToPay() {
+    if (!isLoggedIn()) {
+      redirectToLoginWithResume('payment.html');
+    } else {
+      const urlParams = new URLSearchParams(window.location.search);
+      const routine = urlParams.get('routine');
+      if (routine === 'daily' || routine === 'weekly' || routine === 'monthly') {
+        alert('Ensure the products which are part of your routine (Daily/Weekly/Monthly). Confirm before proceeding to payment.');
+      }
+      window.location.href = 'payment.html';
     }
-  </script>
+  }
+
+  document.getElementById('settingsBtn').addEventListener('click', () => {
+    if (!isLoggedIn()) {
+      redirectToLoginWithResume('settings.html');
+    } else {
+      window.location.href = 'settings.html';
+    }
+  });
+
+  function onLoginSuccess() {
+    localStorage.setItem('user', 'true');
+    const redirect = localStorage.getItem('loginRedirect') || 'index.html';
+    localStorage.removeItem('loginRedirect');
+    localStorage.setItem('loginResume', redirect);
+    window.location.href = redirect;
+  }
+</script>
+
 </body>
 </html>

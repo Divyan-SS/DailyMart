@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,16 +30,15 @@
       </div>
     </div>
   </div>
-</div>
 
-<!-- ✅ Right: Pincode + Cart + Settings -->
-<div class="header-right" style="display: flex; align-items: center; gap: 20px;">
-  <span class="location">📍 600003, Chennai</span>
-  <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
-  <div class="settings">
-    <span class="profile-icon" onclick="handleSettingsClick()" title="Settings">⚙️</span>
+  <!-- ✅ Right: Pincode + Cart + Settings -->
+  <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+    <span class="location">📍 600003, Chennai</span>
+    <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+    <div class="settings">
+      <span class="profile-icon" onclick="handleSettingsClick()" title="Settings">⚙️</span>
+    </div>
   </div>
-</div>
 </header>
 
 <nav class="top-nav">
@@ -100,32 +98,32 @@
   </div>
 </footer>
 
-<script defer src="js/index.js" ></script>
+<script defer src="js/index.js"></script>
 
-<!-- ✅ Routine Login Protection Logic -->
+<!-- ✅ Routine & Settings Login Redirect Logic -->
 <script>
+  // ✅ Check if user is logged in
   function isLoggedIn() {
-    return localStorage.getItem('user') === 'true';
+    return localStorage.getItem('user') !== null;
   }
 
-  function redirectToLoginWithRoutine(routineType) {
-    const redirectUrl = `checkout.html?routine=${routineType}`;
-    localStorage.setItem('loginRedirect', redirectUrl); 
-    window.location.href = `login.html`;
-  }
-
+  // ✅ Handle routine option click (daily/weekly/monthly)
   document.querySelectorAll('.routine2-content a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const type = e.target.dataset.value;
       if (!isLoggedIn()) {
-        redirectToLoginWithRoutine(type);
+        // Store target after login
+        localStorage.setItem('loginRedirect', `checkout.html?routine=${type}`);
+        window.location.href = 'login.html';
       } else {
+        // If already logged in, go to checkout
         window.location.href = `checkout.html?routine=${type}`;
       }
     });
   });
 
+  // ✅ Handle settings icon click
   function handleSettingsClick() {
     if (!isLoggedIn()) {
       localStorage.setItem('loginRedirect', 'settings.html');
@@ -135,5 +133,6 @@
     }
   }
 </script>
+
 </body>
 </html>

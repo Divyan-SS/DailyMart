@@ -106,17 +106,36 @@ window.categoryOffers = {
   'beverages': {1: 19, 2: 10, 3: 25, 8: 16, 9: 31}
 };
 
+// ✅ Cart & Routine Data
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
 let selectedVariants = JSON.parse(localStorage.getItem('selectedVariants')) || {};
 let routine = JSON.parse(localStorage.getItem('routine')) || {};
 
-const container = document.getElementById('checkout-products');
+// ✅ Load routine for logged-in user
+function loadUserRoutine() {
+  const user = localStorage.getItem('currentUser');
+  const allRoutines = JSON.parse(localStorage.getItem('allRoutines')) || {};
+  if (user && allRoutines[user]) {
+    routine = allRoutines[user];
+    localStorage.setItem('routine', JSON.stringify(routine));
+  }
+}
 
+// ✅ Save all data
 function saveAll() {
   localStorage.setItem('cart', JSON.stringify(cart));
   localStorage.setItem('selectedVariants', JSON.stringify(selectedVariants));
   localStorage.setItem('routine', JSON.stringify(routine));
+
+  const user = localStorage.getItem('currentUser');
+  const allRoutines = JSON.parse(localStorage.getItem('allRoutines')) || {};
+  if (user) {
+    allRoutines[user] = routine;
+    localStorage.setItem('allRoutines', JSON.stringify(allRoutines));
+  }
 }
+
+const container = document.getElementById('checkout-products');
 
 function uniqueKey(name, variant) {
   return `${name}|${variant}`;
@@ -133,13 +152,12 @@ function getAdjustedPrice(base, variant) {
   if (variant.includes('1kg') || variant.includes('1L')) return base * 2;
   return base;
 }
+
 function renderCheckoutCards() {
-  const container = document.getElementById('checkout-products');
   const emptyMsg = document.getElementById('empty-cart-message');
   container.innerHTML = '';
 
   const keys = Object.keys(cart);
-
   if (keys.length === 0) {
     emptyMsg.style.display = 'block';
     return;
@@ -160,7 +178,7 @@ function renderCheckoutCards() {
     const final = adjusted - discount;
     const oldPrice = offer ? `<s>₹${adjusted}</s>` : '';
     const qty = cart[key];
-    const currentRoutine = routine[key] || 'None';
+    const selected = routine[key] || [];
 
     const card = document.createElement('div');
     card.className = 'checkout-card';
@@ -175,8 +193,12 @@ function renderCheckoutCards() {
         <p>Variant: ${variant}</p>
         <p class="checkout-price">${oldPrice} <strong>₹${final}</strong></p>
         <div class="checkout-routine">
-          ${['Daily','Weekly','Monthly','None'].map(f => `
-            <button class="routine-btn ${currentRoutine === f ? 'active' : ''}" onclick="setRoutine('${key}', '${f}')">${f}</button>
+          ${['Daily','Weekly','Monthly','None'].map(freq => `
+            <button 
+              class="routine-btn ${selected.includes(freq) || (freq === 'None' && selected.length === 0) ? 'active' : ''}" 
+              onclick="toggleRoutine('${key}', '${freq}')">
+              ${freq}
+            </button>
           `).join('')}
         </div>
         <div class="qty-btns">
@@ -190,6 +212,25 @@ function renderCheckoutCards() {
   });
 }
 
+function toggleRoutine(key, freq) {
+  routine[key] = routine[key] || [];
+
+  if (freq === 'None') {
+    routine[key] = [];
+  } else {
+    if (routine[key].includes(freq)) {
+      routine[key] = routine[key].filter(f => f !== freq);
+    } else {
+      routine[key].push(freq);
+    }
+    routine[key] = routine[key].filter(f => f !== 'None');
+  }
+
+  if (routine[key].length === 0) delete routine[key];
+
+  saveAll();
+  renderCheckoutCards();
+}
 
 function changeQty(key, delta) {
   if (cart[key]) {
@@ -200,17 +241,8 @@ function changeQty(key, delta) {
     }
     saveAll();
     renderCheckoutCards();
+    updateCartCount();
   }
-}
-
-function setRoutine(key, freq) {
-  if (freq === 'None') {
-    delete routine[key];
-  } else {
-    routine[key] = freq;
-  }
-  saveAll();
-  renderCheckoutCards();
 }
 
 document.getElementById('add-more-btn')?.addEventListener('click', () => {
@@ -227,8 +259,7 @@ document.getElementById('discard-selected-btn')?.addEventListener('click', () =>
     });
     saveAll();
     renderCheckoutCards();
-    updateCartCount(); // ✅ update after render
-
+    updateCartCount();
   }
 });
 
@@ -238,17 +269,14 @@ document.getElementById('discard-all-btn')?.addEventListener('click', () => {
     routine = {};
     saveAll();
     renderCheckoutCards();
-    updateCartCount(); // ✅ update after render
-
+    updateCartCount();
   }
 });
 
-renderCheckoutCards();
-
+// ✅ Live Search (unchanged)
 const searchInput = document.getElementById('searchInput');
 const searchDropdown = document.getElementById('searchDropdown');
 
-// ✅ Render live search suggestions
 function rerenderSearchSuggestions() {
   const term = searchInput.value.toLowerCase();
   searchDropdown.innerHTML = '';
@@ -299,28 +327,20 @@ function rerenderSearchSuggestions() {
         </div>
       </div>
     `;
-
     searchDropdown.appendChild(item);
   });
 
   searchDropdown.style.display = matched.length ? 'block' : 'none';
 }
 
-// ✅ Trigger on input
 searchInput?.addEventListener('input', rerenderSearchSuggestions);
 searchInput?.addEventListener('focus', rerenderSearchSuggestions);
-
 document.addEventListener('click', e => {
-  if (
-    !searchDropdown.contains(e.target) &&
-    e.target !== searchInput &&
-    !e.target.closest('.search-suggestion')
-  ) {
+  if (!searchDropdown.contains(e.target) && e.target !== searchInput && !e.target.closest('.search-suggestion')) {
     searchDropdown.style.display = 'none';
   }
 });
 
-// ✅ Update price + quantity for selected variant
 function handleSearchVariantChange(sel, name, base, offer) {
   const v = sel.value;
   selectedVariants[name] = v;
@@ -348,8 +368,6 @@ function handleSearchVariantChange(sel, name, base, offer) {
   saveAll();
 }
 
-
-// ✅ Add quantity
 function increaseQty(name, variant, rerenderSearch) {
   const key = uniqueKey(name, variant);
   cart[key] = (cart[key] || 0) + 1;
@@ -359,7 +377,6 @@ function increaseQty(name, variant, rerenderSearch) {
   if (rerenderSearch) rerenderSearchSuggestions();
 }
 
-// ✅ Decrease quantity
 function decreaseQty(name, variant, rerenderSearch) {
   const key = uniqueKey(name, variant);
   if (cart[key]) {
@@ -375,12 +392,48 @@ function decreaseQty(name, variant, rerenderSearch) {
   }
 }
 
-//=======card count ==============
 function updateCartCount() {
   const total = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
   const el = document.getElementById('cartCount');
   if (el) el.textContent = total;
 }
 
-updateCartCount(); // ✅ Call once after everything is rendered
+// ✅ Page Load Logic
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const routineType = params.get('routine');
 
+  loadUserRoutine();
+
+  if (!routineType && Object.keys(cart).length === 0 && Object.keys(routine).length > 0) {
+    Object.keys(routine).forEach(key => {
+      cart[key] = 1;
+    });
+    saveAll();
+  }
+
+  if (routineType) {
+    const capRoutine = routineType.charAt(0).toUpperCase() + routineType.slice(1);
+    const filteredKeys = Object.keys(routine).filter(k => routine[k].includes(capRoutine));
+    if (!filteredKeys.length) {
+container.innerHTML = `
+  <div class="empty-cart-msg">
+    <p>No ${capRoutine} routine products found.<br>
+    Add the product and select the <b>${capRoutine}</b> button in product cards.</p>
+    <a href="product.html" class="add-product-btn">➕ Add Product</a>
+  </div>`;
+      return;
+    }
+
+    const filteredCart = {};
+    filteredKeys.forEach(k => {
+      filteredCart[k] = cart[k] || 1;
+    });
+
+    cart = filteredCart;
+    saveAll();
+  }
+
+  renderCheckoutCards();
+  updateCartCount();
+});

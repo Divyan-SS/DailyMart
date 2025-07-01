@@ -1,6 +1,5 @@
 /* checkout-style.css — Enhanced UI for DailyMart Product Page */
 
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
@@ -11,13 +10,12 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 body {
   display: flex;
   flex-direction: column;
-
 }
 
 body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
@@ -35,7 +33,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   position: sticky;
   top: 0;
   z-index: 1300;
-  
 }
 
 /* ✅ LOGO */
@@ -51,7 +48,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
 }
 
 .orange {
-  color: #ff4d4f; /* Replacing yellow with orange if you want that name */
+  color: #ff4d4f;
 }
 
 /* ✅ CENTER: SEARCH + ROUTINE */
@@ -72,6 +69,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   width: 600px;
   margin-left: -250px;
 }
+
+/* ✅ Wrapper for Routine Dropdown */
+.routine {
+  position: relative;
+  display: inline-block;
+}
+
 /* ✅ ROUTINE DROPDOWN */
 .routine-label {
   padding: 8px 14px;
@@ -99,9 +103,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   z-index: 999;
   width: 197px;
   display: none;
-  margin-left: 1250px;
-  margin-top: -37px;
-
 }
 
 .routine:hover .routine-content,
@@ -117,9 +118,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   text-align: center;
   text-decoration: none;
   font-weight:500;
-  /* ✅ Animate background, text color, and position */
   transition: background-color 0.3s ease, padding-left 0.2s;
-
 }
 
 .routine-content a:hover {
@@ -128,9 +127,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   padding-left: 18px; 
   font-size: 16px;
   font-weight: bold;
-  
 }
-
 
 /* ✅ RIGHT SIDE: LOCATION + CART + SETTINGS */
 .header-right {
@@ -151,18 +148,15 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   position: relative;
 }
 
-
 .profile-icon {
   font-size: 20px;
   cursor: pointer;
   color: #333;
 }
-/* Settings Dropdown */
 .settings {
   position: relative;
   cursor: pointer;
 }
-
 .profile-icon {
   font-size: 20px;
 }
@@ -173,10 +167,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   padding: 12px 24px;
   font-size: 14px;
   position: sticky;
-  top: 120px; /* header + nav combined */
+  top: 120px;
   z-index: 998;
 }
-
 
 /* ✅ MAIN */
 .checkout-main {
@@ -189,7 +182,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   font-size: 24px;
   margin-bottom: 24px;
 }
-
 
 /* empty card words */
 .empty-cart-msg {
@@ -207,12 +199,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
 }
 
 .go-shop-btn {
-  
   margin-top: 40px;
   display: inline-block;
   padding: 10px 20px;
   background-color: #4CAF50;
-;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -224,11 +214,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   background-color: #45a049;
 }
 
-
 /* product card wrapper */
 .checkout-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ⬅️ 4 cards per row */
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   padding: 10px;
   margin-left: -15px;
@@ -237,8 +226,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
 
 /* ✅ PRODUCT CARD */
 .checkout-card {
-  width: 100%; /* ⬅️ Use full width of its grid cell */
-  height: 200px;
+  width: 100%;
+  height: 220px;
   display: flex;
   align-items: center;
   background: #fff;
@@ -273,8 +262,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   border-radius: 8px;
 }
 
-
-
 .checkout-info {
   flex-grow: 1;
   margin-left: 10px;
@@ -300,6 +287,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   gap: 8px;
   margin: 8px 0;
 }
+
+
 
 .routine-btn {
   padding: 6px 10px;
@@ -331,7 +320,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-
 }
 
 /* ✅ ACTION BUTTONS */
@@ -367,7 +355,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
 
 .proceed-btn {
   background: #4CAF50;
-;
   color: white;
   font-size: 18px;
   padding: 14px 28px;
@@ -388,8 +375,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   background: #4CAF50;
   color: white;
   text-align: center;
-  width: 1900px;
-  margin-left: 5px;
+  margin-left: 35px;
   height: 1px;
   
 }
@@ -398,7 +384,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   background-color: #4CAF50;
   padding: 20px;
   width: 1902px;
-  margin-left: -37px;
+  margin-left: -35px;
   
 }
 
@@ -436,6 +422,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
   margin-left: -37px;
   
 }
+
 /* -------- 🔽 Search Suggestion wrapper -------- */
 
 #searchDropdown {
@@ -627,3 +614,55 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, span, input, select {
     left: 2.5%;
   }
 }
+
+/* routine checkbox color for rountine option in product card */
+
+.checkout-routine .routine-btn {
+  padding: 4px 8px;
+  margin: 10px  0 0;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.checkout-routine .routine-btn.active {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+
+/* ✅ Routine View Empty Message */
+.empty-cart-msg {
+  text-align: center;
+  color: #444;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 80px;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  line-height: 1.6;
+  font-size: 18px;
+  width: 1900px;
+}
+
+/*empty message for routine heckout */
+
+.add-product-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.add-product-btn:hover {
+  background: #087b4b;
+}
+

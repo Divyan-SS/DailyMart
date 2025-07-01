@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- ✅ Header with Logo Only -->
+  <!-- ✅ Header: Logo Only -->
   <header class="main-header">
     <div class="header-left">
       <h1 class="logo">
@@ -20,26 +20,28 @@
     <div class="header-right"></div>
   </header>
 
-   <div class="breadcrumb">
+  <!-- ✅ Breadcrumb -->
+  <div class="breadcrumb">
     <a href="index.html">Home</a> / <a href="login.html">Login</a>
   </div>
 
+  <!-- ✅ Login Form Steps -->
   <main class="login-container">
     <h2>Login with Phone</h2>
 
-    <!-- Step 1: Enter Phone -->
+    <!-- Step 1: Phone -->
     <div id="step1">
       <input type="tel" id="phone" placeholder="Enter phone number" required />
       <button onclick="sendOTP()">Send OTP</button>
     </div>
 
-    <!-- Step 2: Enter OTP -->
+    <!-- Step 2: OTP -->
     <div id="step2" style="display: none;">
       <input type="text" id="otp" placeholder="Enter OTP" required />
       <button onclick="verifyOTP()">Verify OTP</button>
     </div>
 
-    <!-- Step 3: User Profile Details -->
+    <!-- Step 3: Profile -->
     <div id="step3" style="display: none;">
       <input type="text" id="fname" placeholder="First Name" required />
       <input type="text" id="lname" placeholder="Last Name" required />
@@ -48,6 +50,7 @@
       <button onclick="validatePIN()">Submit</button>
     </div>
 
+    <!-- Error -->
     <p id="error" class="error"></p>
   </main>
 
@@ -68,7 +71,7 @@
     </div>
   </footer>
 
-  <!-- ✅ JavaScript -->
+  <!-- ✅ Script Logic -->
   <script>
     function sendOTP() {
       const phone = document.getElementById('phone').value;
@@ -94,29 +97,62 @@
     function validatePIN() {
       const pin = document.getElementById('pin').value;
       const allowedPins = ['600001', '641602', '641601'];
+      const errorBox = document.getElementById('error');
+      errorBox.textContent = '';
 
-      if (allowedPins.includes(pin)) {
-        const user = {
-          fname: document.getElementById('fname').value,
-          lname: document.getElementById('lname').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          pin
-        };
-        localStorage.setItem('userProfile', JSON.stringify(user));
-        localStorage.setItem('user', 'true');
-
-        alert('Welcome ' + user.fname + '!');
-
-        // ✅ Redirect to stored page or default to home
-        const redirect = localStorage.getItem('loginRedirect');
-        localStorage.removeItem('loginRedirect');
-        location.replace(redirect || 'index.html');
-
-      } else {
-        document.getElementById('error').textContent = 'Unavailable PIN code. Try again.';
+      if (!allowedPins.includes(pin)) {
+        errorBox.textContent = 'Unavailable PIN code. Try again.';
+        return;
       }
+
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!fname || !lname || !email || !phone) {
+        errorBox.textContent = 'Please fill all fields.';
+        return;
+      }
+
+      const newUser = { fname, lname, email, phone, pin };
+      const users = JSON.parse(localStorage.getItem('allUsers')) || [];
+
+      const existing = users.find(u => u.phone === phone && u.email === email);
+      if (existing && existing.fname !== fname) {
+        errorBox.textContent = 'Phone/email already used with a different name.';
+        return;
+      }
+
+      const phoneUsed = users.find(u => u.phone === phone && u.fname !== fname);
+      const emailUsed = users.find(u => u.email === email && u.fname !== fname);
+      if (phoneUsed || emailUsed) {
+        errorBox.textContent = 'Phone or Email already used by another user.';
+        return;
+      }
+
+      if (!existing) {
+        users.push(newUser);
+        localStorage.setItem('allUsers', JSON.stringify(users));
+      }
+
+      // ✅ Mark login success
+      localStorage.setItem('userProfile', JSON.stringify(newUser));
+      localStorage.setItem('user', email);
+      const currentUser = fname + '_' + phone;
+      localStorage.setItem('currentUser', currentUser);
+
+      const routineMap = JSON.parse(localStorage.getItem('routineMap')) || {};
+      const savedRoutine = routineMap[currentUser] || {};
+      localStorage.setItem('routine', JSON.stringify(savedRoutine));
+
+      alert('Welcome ' + fname + '!');
+
+      const redirect = localStorage.getItem('loginRedirect');
+      localStorage.removeItem('loginRedirect');
+      location.replace(redirect || 'index.html');
     }
   </script>
+
 </body>
 </html>

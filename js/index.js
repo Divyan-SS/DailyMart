@@ -352,3 +352,28 @@ document.querySelectorAll('.routine-content a').forEach(item => {
     console.log('Selected routine:', val);
   });
 });
+
+function setRoutine(name, variant, frequency, isSearch = false) {
+  const k = uniqueKey(name, variant);
+  const routineData = JSON.parse(localStorage.getItem('routine')) || {};
+  if (frequency === 'None') {
+    delete routineData[k];
+  } else {
+    routineData[k] = frequency;
+  }
+  localStorage.setItem('routine', JSON.stringify(routineData));
+  if (isSearch) rerenderSearchSuggestions();
+}
+
+
+// ✅ Handle Routine and Settings button click — prevent unnecessary login redirect
+document.querySelectorAll('.require-login').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      e.preventDefault();
+      localStorage.setItem('loginRedirect', e.currentTarget.getAttribute('href'));
+      location.href = 'login.html';
+    }
+  });
+});
