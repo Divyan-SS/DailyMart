@@ -28,13 +28,43 @@ header.main-header {
   color: #ff4d4f;
 }
 
-/* ✅ Breadcrumb */
-.breadcrumb {
-  padding: 10px 32px;
+/* --- BREADCRUMB BAR with Styled Back Button --- */
+.breadcrumb-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 12px 24px;
   font-size: 14px;
-  background-color: #f2f2f2;
-  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 112px;
+  z-index: 998;
+  height: 20px;
+  gap: 24px;
 }
+
+.breadcrumb-bar .breadcrumb {
+  margin: 0;
+}
+
+.back-button {
+  background-color: #e8f0fe;
+  border: 1px solid #c2d9ff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a73e8;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-left: 1375px;
+}
+
+.back-button:hover {
+  background-color: #d2e3fc;
+}
+
+
 
 /* ✅ Main Section */
 .payment-main {
@@ -124,11 +154,100 @@ footer.site-footer {
   text-align: center;
 }
 
-
-
 /* ✅ Cart icon badge */
 .cart-icon {
   font-size: 18px;
   text-decoration: none;
   color: #333;
+}
+
+/* ✅ Address Form Section */
+#addressSection {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+#addressSection h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 22px;
+}
+
+#addressSection input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+#addressSection input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+#addressSection button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#addressSection button:hover {
+  background-color: #388e3c;
+}
+
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.address-form,
+#paymentSection {
+  background-color: #f9f9f9;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.payment-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.payment-tab {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.payment-tab.active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+.payment-form input, .payment-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }

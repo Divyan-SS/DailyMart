@@ -306,28 +306,39 @@ footer {
   font-size: 14px;
 }
 
-
-/*---product card routine buttons---*/
-
-.routine-wrap {
-
-  margin-top: 20px;
-  margin-bottom: 15px;
+/* --- BREADCRUMB BAR with Styled Back Button --- */
+.breadcrumb-bar {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.routine-btn {
-  padding: 3px 8px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 12px 24px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f2f2f2;
-  cursor: pointer;
+  position: sticky;
+  top: 160px;
+  z-index: 998;
+  height: 20px;
+  gap: 24px;
 }
-.routine-btn.selected {
-  background: #ff4d4f;
-  color: white;
-  border-color: #ff4d4f;
+
+.breadcrumb-bar .breadcrumb {
+  margin: 0;
 }
+
+.back-button {
+  background-color: #e8f0fe;
+  border: 1px solid #c2d9ff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a73e8;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-left: 1550px;
+}
+
+.back-button:hover {
+  background-color: #d2e3fc;
+}
+

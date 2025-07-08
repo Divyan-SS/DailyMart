@@ -94,64 +94,74 @@
       }
     }
 
-    function validatePIN() {
-      const pin = document.getElementById('pin').value;
-      const allowedPins = ['600001', '641602', '641601'];
-      const errorBox = document.getElementById('error');
-      errorBox.textContent = '';
+    
+  function validatePIN() {
+    const pin = document.getElementById('pin').value.trim();
+    const allowedPins = ['600001', '641602', '641601'];
+    const errorBox = document.getElementById('error');
+    errorBox.textContent = '';
 
-      if (!allowedPins.includes(pin)) {
-        errorBox.textContent = 'Unavailable PIN code. Try again.';
-        return;
-      }
-
-      const fname = document.getElementById('fname').value.trim();
-      const lname = document.getElementById('lname').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-
-      if (!fname || !lname || !email || !phone) {
-        errorBox.textContent = 'Please fill all fields.';
-        return;
-      }
-
-      const newUser = { fname, lname, email, phone, pin };
-      const users = JSON.parse(localStorage.getItem('allUsers')) || [];
-
-      const existing = users.find(u => u.phone === phone && u.email === email);
-      if (existing && existing.fname !== fname) {
-        errorBox.textContent = 'Phone/email already used with a different name.';
-        return;
-      }
-
-      const phoneUsed = users.find(u => u.phone === phone && u.fname !== fname);
-      const emailUsed = users.find(u => u.email === email && u.fname !== fname);
-      if (phoneUsed || emailUsed) {
-        errorBox.textContent = 'Phone or Email already used by another user.';
-        return;
-      }
-
-      if (!existing) {
-        users.push(newUser);
-        localStorage.setItem('allUsers', JSON.stringify(users));
-      }
-
-      // ✅ Mark login success
-      localStorage.setItem('userProfile', JSON.stringify(newUser));
-      localStorage.setItem('user', email);
-      const currentUser = fname + '_' + phone;
-      localStorage.setItem('currentUser', currentUser);
-
-      const routineMap = JSON.parse(localStorage.getItem('routineMap')) || {};
-      const savedRoutine = routineMap[currentUser] || {};
-      localStorage.setItem('routine', JSON.stringify(savedRoutine));
-
-      alert('Welcome ' + fname + '!');
-
-      const redirect = localStorage.getItem('loginRedirect');
-      localStorage.removeItem('loginRedirect');
-      location.replace(redirect || 'index.html');
+    if (!allowedPins.includes(pin)) {
+      errorBox.textContent = 'Unavailable PIN code. Try again.';
+      return;
     }
+
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!fname || !lname || !email || !phone) {
+      errorBox.textContent = 'Please fill all fields.';
+      return;
+    }
+
+    const fullName = `${fname} ${lname}`;
+    const newUser = { fname, lname, email, phone, pin };
+    const users = JSON.parse(localStorage.getItem('allUsers')) || [];
+
+    const isDuplicate = users.find(u => u.phone === phone && u.email === email && `${u.fname} ${u.lname}` !== fullName);
+    if (isDuplicate) {
+      errorBox.textContent = 'Phone and Email already used by another name.';
+      return;
+    }
+
+    const phoneUsed = users.find(u => u.phone === phone && `${u.fname} ${u.lname}` !== fullName);
+    if (phoneUsed) {
+      errorBox.textContent = 'Phone number used by another person.';
+      return;
+    }
+
+    const emailUsed = users.find(u => u.email === email && `${u.fname} ${u.lname}` !== fullName);
+    if (emailUsed) {
+      errorBox.textContent = 'Email already used by another person.';
+      return;
+    }
+
+    // ✅ Valid: Save new or existing user
+    if (!users.some(u => u.phone === phone && u.email === email)) {
+      users.push(newUser);
+      localStorage.setItem('allUsers', JSON.stringify(users));
+    }
+
+    // ✅ Login & Store Session
+    localStorage.setItem('userProfile', JSON.stringify(newUser));
+    localStorage.setItem('user', email);
+
+    const currentUser = `${fname}_${phone}`;
+    localStorage.setItem('currentUser', currentUser);
+
+    const routineMap = JSON.parse(localStorage.getItem('routineMap')) || {};
+    const savedRoutine = routineMap[currentUser] || {};
+    localStorage.setItem('routine', JSON.stringify(savedRoutine));
+
+    alert('Welcome ' + fname + '!');
+    const redirect = localStorage.getItem('loginRedirect');
+    localStorage.removeItem('loginRedirect');
+    location.replace(redirect || 'index.html');
+  }
+
+
   </script>
 
 </body>

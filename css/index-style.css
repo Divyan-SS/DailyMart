@@ -110,7 +110,8 @@ body {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
+  margin-right: 10px;
 }
 
 .location {
@@ -129,11 +130,9 @@ body {
 /* Settings Dropdown */
 .settings {
   position: relative;
-  cursor: pointer;
-}
-
-.profile-icon {
+  margin-left: 20px;
   font-size: 20px;
+
 }
 
 
@@ -169,7 +168,7 @@ body {
   align-items: center;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
-  top: 105px; /* height of header */
+  top: 109px; /* height of header */
   z-index: 999;
 }
 .dropdown-btn {
@@ -231,7 +230,7 @@ body {
   padding: 12px 24px;
   font-size: 14px;
   position: sticky;
-  top: 160px; /* header + nav combined */
+  top: 189x; /* header + nav combined */
   z-index: 998;
 }
 

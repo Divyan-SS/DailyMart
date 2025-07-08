@@ -1,0 +1,163 @@
+<!-- bill.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DailyMart — Bill</title>
+  <link rel="stylesheet" href="css/index-style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #f1f1f1;
+      padding: 0;
+      margin: 0;
+    }
+    header {
+      background: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .bill-container {
+      background: white;
+      margin: 40px auto;
+      padding: 30px;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    pre {
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+    .btns {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .back-btn {
+      margin-top: 10px;
+      text-align: right;
+      padding-right: 24px;
+    }
+    .back-btn a {
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><span class="green">Daily</span><span class="orange">Mart</span></div>
+    <div class="back-btn"><a href="index.html">🏠 Home</a></div>
+  </header>
+
+  <div class="bill-container">
+    <pre id="billContent">
+Loading Bill...
+    </pre>
+    <div class="btns">
+      <button onclick="downloadPDF()">📄 Download PDF</button>
+      <button onclick="window.location.href='index.html'">🏠 Go to Home</button>
+    </div>
+  </div>
+
+<script>
+  const order = JSON.parse(localStorage.getItem('lastOrder')) || {};
+  const items = order.items || {};
+  const prices = {
+    'Aavin Milk 1L': [60, 0],
+    'Colgate Paste 100g': [90, 10],
+    'Gold Winner Oil 1L': [150, 5],
+    'Good Day Biscuits': [25, 0],
+    'Harpic 500ml': [99, 4]
+  };
+
+  let sNo = 1, totalQty = 0, gross = 0, saved = 0;
+  let rows = '';
+
+  for (const name in items) {
+    const qty = items[name];
+    const [rate, disc] = prices[name] || [50, 0];
+    const amount = rate * qty * (1 - disc / 100);
+    const line = `${sNo.toString().padEnd(5)}${name.padEnd(23)}${qty.toString().padEnd(6)}${rate.toFixed(2).padEnd(8)}${disc.toString().padEnd(7)}${amount.toFixed(2).padEnd(8)}`;
+    rows += line + '\n';
+    gross += rate * qty;
+    saved += rate * qty * disc / 100;
+    totalQty += qty;
+    sNo++;
+  }
+
+  const offerDiscount = gross * 0.02;
+  const afterOffer = gross - offerDiscount;
+  const gst = afterOffer * 0.04;
+  const net = afterOffer + gst;
+  const roundOff = Math.round(net) - net;
+  const final = net + roundOff;
+
+  const bill = `
+                           DailyMart
+                 online product like one addressing
+                         Erode, Tamil Nadu
+             Ph: 0422-244XXXX | GSTIN: 33XXXXXXXZ5
+------------------------------------------------------------
+Invoice No   : INV-${Math.floor(100000 + Math.random()*899999)}       Time: ${new Date().toLocaleTimeString()}
+Date         : ${new Date().toLocaleDateString('en-GB')}       
+Cashier Name : RAMESH
+Customer Ph  : 9876543210
+------------------------------------------------------------
+S.No  Item Name             Qty   Rate    Disc    Amount
+------------------------------------------------------------
+${rows}------------------------------------------------------------
+Total Quantity   : ${totalQty} Items
+Gross Amount     : ₹${gross.toFixed(2)}
+DailyMart Offer  : 2% OFF
+Offer Discount   : ₹${offerDiscount.toFixed(2)}
+Amount After Offer: ₹${afterOffer.toFixed(2)}
+GST @ 4%         : ₹${gst.toFixed(2)}
+Round Off        : ₹${roundOff >= 0 ? '+' : ''}${roundOff.toFixed(2)}
+------------------------------------------------------------
+Net Amount Payable : ₹${final.toFixed(2)}
+Paid Amount        : ₹${final.toFixed(2)}
+------------------------------------------------------------
+              THANK YOU! VISIT AGAIN 😊
+     Exchange within 7 days with original bill.
+ For queries: Call 0422-244XXXX or email support@dailymart.com 
+------------------------------------------------------------
+      Totally you saved ₹${(saved + offerDiscount).toFixed(2)} in this purchase!`;
+
+  document.getElementById('billContent').textContent = bill;
+
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFont("Courier", "normal");
+    doc.setFontSize(10);
+    const lines = document.getElementById("billContent").textContent.split("\n");
+    let y = 10;
+    lines.forEach(line => {
+      doc.text(line, 10, y);
+      y += 6;
+    });
+    doc.save("DailyMart_Bill.pdf");
+  }
+</script>
+</body>
+</html>

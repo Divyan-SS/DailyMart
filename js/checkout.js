@@ -106,10 +106,11 @@ window.categoryOffers = {
   'beverages': {1: 19, 2: 10, 3: 25, 8: 16, 9: 31}
 };
 
-// ✅ Cart & Routine Data
+// ✅ CART & ROUTINE DATA
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
 let selectedVariants = JSON.parse(localStorage.getItem('selectedVariants')) || {};
 let routine = JSON.parse(localStorage.getItem('routine')) || {};
+let hiddenFromCheckout = JSON.parse(localStorage.getItem('hiddenFromCheckout')) || [];
 
 // ✅ Load routine for logged-in user
 function loadUserRoutine() {
@@ -126,6 +127,7 @@ function saveAll() {
   localStorage.setItem('cart', JSON.stringify(cart));
   localStorage.setItem('selectedVariants', JSON.stringify(selectedVariants));
   localStorage.setItem('routine', JSON.stringify(routine));
+  localStorage.setItem('hiddenFromCheckout', JSON.stringify(hiddenFromCheckout)); // ✅ added
 
   const user = localStorage.getItem('currentUser');
   const allRoutines = JSON.parse(localStorage.getItem('allRoutines')) || {};
@@ -236,8 +238,12 @@ function changeQty(key, delta) {
   if (cart[key]) {
     cart[key] += delta;
     if (cart[key] <= 0) {
-      delete cart[key];
-      delete routine[key];
+      if (routine[key] && routine[key].length > 0) {
+        delete cart[key]; // Remove from cart only
+      } else {
+        delete cart[key];
+        delete routine[key];
+      }
     }
     saveAll();
     renderCheckoutCards();
@@ -245,17 +251,19 @@ function changeQty(key, delta) {
   }
 }
 
+
 document.getElementById('add-more-btn')?.addEventListener('click', () => {
   window.location.href = 'product.html';
 });
 
+// ✅ MODIFY discard-selected-btn handler
 document.getElementById('discard-selected-btn')?.addEventListener('click', () => {
   const checked = document.querySelectorAll('.discard-checkbox:checked');
   if (checked.length && confirm('Are you sure you want to discard selected products?')) {
     checked.forEach(cb => {
       const key = cb.dataset.key;
       delete cart[key];
-      delete routine[key];
+      if (!hiddenFromCheckout.includes(key)) hiddenFromCheckout.push(key); // ✅ mark as hidden
     });
     saveAll();
     renderCheckoutCards();
@@ -263,15 +271,23 @@ document.getElementById('discard-selected-btn')?.addEventListener('click', () =>
   }
 });
 
+
+// ✅ MODIFY discard-all-btn handler
 document.getElementById('discard-all-btn')?.addEventListener('click', () => {
   if (confirm('Are you sure you want to discard all products?')) {
-    cart = {};
-    routine = {};
+    Object.keys(cart).forEach(key => {
+      delete cart[key];
+      if (!hiddenFromCheckout.includes(key)) hiddenFromCheckout.push(key); // ✅ mark as hidden
+    });
     saveAll();
     renderCheckoutCards();
     updateCartCount();
+    const emptyMsg = document.getElementById('empty-cart-message');
+    if (Object.keys(cart).length === 0 && emptyMsg) emptyMsg.style.display = 'block';
   }
 });
+
+
 
 // ✅ Live Search (unchanged)
 const searchInput = document.getElementById('searchInput');
@@ -382,8 +398,12 @@ function decreaseQty(name, variant, rerenderSearch) {
   if (cart[key]) {
     cart[key]--;
     if (cart[key] <= 0) {
-      delete cart[key];
-      delete routine[key];
+      if (routine[key] && routine[key].length > 0) {
+        delete cart[key]; // Remove only from cart, retain routine
+      } else {
+        delete cart[key];
+        delete routine[key];
+      }
     }
     saveAll();
     renderCheckoutCards?.();
@@ -398,7 +418,6 @@ function updateCartCount() {
   if (el) el.textContent = total;
 }
 
-// ✅ Page Load Logic
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const routineType = params.get('routine');
@@ -407,33 +426,39 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (!routineType && Object.keys(cart).length === 0 && Object.keys(routine).length > 0) {
     Object.keys(routine).forEach(key => {
-      cart[key] = 1;
+      if (!hiddenFromCheckout.includes(key)) {
+        cart[key] = 1;
+      }
     });
     saveAll();
   }
 
   if (routineType) {
-    const capRoutine = routineType.charAt(0).toUpperCase() + routineType.slice(1);
-    const filteredKeys = Object.keys(routine).filter(k => routine[k].includes(capRoutine));
-    if (!filteredKeys.length) {
-container.innerHTML = `
-  <div class="empty-cart-msg">
-    <p>No ${capRoutine} routine products found.<br>
-    Add the product and select the <b>${capRoutine}</b> button in product cards.</p>
-    <a href="product.html" class="add-product-btn">➕ Add Product</a>
-  </div>`;
-      return;
-    }
+  const capRoutine = routineType.charAt(0).toUpperCase() + routineType.slice(1);
+  const filteredKeys = Object.keys(routine).filter(k => routine[k].includes(capRoutine));
 
-    const filteredCart = {};
-    filteredKeys.forEach(k => {
-      filteredCart[k] = cart[k] || 1;
-    });
-
-    cart = filteredCart;
-    saveAll();
+  if (!filteredKeys.length) {
+    container.innerHTML = `
+      <div class="empty-cart-msg">
+        <p>No ${capRoutine} routine products found.<br>
+        Add the product and select the <b>${capRoutine}</b> button in product cards.</p>
+        <a href="product.html" class="add-product-btn">➕ Add Product</a>
+      </div>`;
+    return;
   }
+
+  const filteredCart = {};
+  filteredKeys.forEach(k => {
+    // ✅ Don't skip if user requested specific routine type
+    filteredCart[k] = cart[k] || 1;
+  });
+
+  cart = filteredCart;
+  saveAll();
+}
 
   renderCheckoutCards();
   updateCartCount();
+  localStorage.setItem('productList', JSON.stringify(products));
+
 });

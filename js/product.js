@@ -432,3 +432,4 @@ window.staticPrices = {};
 products.forEach(p => {
   window.staticPrices[p.name] = p.price;
 });
+

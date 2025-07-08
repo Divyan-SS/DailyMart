@@ -38,15 +38,21 @@
       <span class="location">📍 600003, Chennai</span>
       <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
       <div class="settings">
-        <span class="profile-icon" id="settingsBtn" title="Settings">⚙️</span>
+
+      <a href="settings.html" onclick="localStorage.setItem('settingsFrom', 'checkout') " class="profile-icon">⚙️</a>
       </div>
     </div>
   </header>
 
   <!-- ✅ Breadcrumb -->
+   <div class="breadcrumb-bar">
   <div class="breadcrumb">
     <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a>
   </div>
+  <div class="back-btn">
+    <a href="javascript:history.back()" class="back-button">👈 Back</a>
+  </div>
+</div>
 
   <!-- ✅ MAIN CHECKOUT AREA -->
   <main class="checkout-main">
@@ -91,7 +97,7 @@
   <!-- ✅ JS Logic -->
   <script src="js/checkout.js"></script>
 
-  <!-- Inside: <script> -->
+  <!-- ✅ Routine option click — updated: removed alert, only redirect -->
 <script>
   function isLoggedIn() {
     return !!localStorage.getItem('user');
@@ -102,21 +108,28 @@
     window.location.href = 'login.html';
   }
 
-  // ✅ Routine option click — updated: removed alert, only redirect
   document.querySelectorAll('.routine-content a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const type = e.target.dataset.value;
       const target = `checkout.html?routine=${type}`;
+
+      // ✅ Save current cart before routine overwrite
+      const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+      localStorage.setItem('preRoutineCart', JSON.stringify(cart));
+
+      // ✅ Track where the routine button was clicked from
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      localStorage.setItem('fromPage', currentPage);
+
       if (!isLoggedIn()) {
         redirectToLoginWithResume(target);
       } else {
-        window.location.href = target; // ⛔️ Removed alert here
+        window.location.href = target;
       }
     });
   });
 
-  // ✅ Proceed to Pay protection — alert remains here (only in routine case)
   function proceedToPay() {
     if (!isLoggedIn()) {
       redirectToLoginWithResume('payment.html');
@@ -146,6 +159,43 @@
     window.location.href = redirect;
   }
 </script>
+
+<!-- ✅ Show Exit Routine only when ?routine= present -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const routine = params.get('routine');
+    const exitBtn = document.getElementById('exit-routine-btn');
+
+    if (exitBtn && routine) {
+      exitBtn.style.display = 'inline-block';
+
+      exitBtn.addEventListener('click', () => {
+        // ✅ Remove only routine cards visually (matching data-type)
+        const wrapper = document.getElementById('checkout-products');
+        if (wrapper) {
+          const cardsToRemove = wrapper.querySelectorAll(`.checkout-card[data-type="${routine}"]`);
+          cardsToRemove.forEach(card => card.remove());
+        }
+
+        // ✅ Restore previous cart only if preRoutineCart exists
+        const preRoutine = localStorage.getItem('preRoutineCart');
+        if (preRoutine) {
+          localStorage.setItem('cart', preRoutine);
+          localStorage.removeItem('preRoutineCart');
+        }
+
+        // ✅ Redirect to the original page where routine was clicked
+        const fromPage = localStorage.getItem('fromPage') || 'product.html';
+        localStorage.removeItem('fromPage');
+        window.location.href = fromPage;
+      });
+    }
+  });
+</script>
+
+
+
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-<!--payment.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +5,109 @@
   <title>DailyMart — Payment</title>
   <link rel="stylesheet" href="css/index-style.css" />
   <link rel="stylesheet" href="css/payment-style.css" />
+  <style>
+    .payment-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 40px;
+      width: 100%;
+      margin: 120px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .payment-main.full {
+      grid-template-columns: 1fr;
+    }
+
+    .address-form,
+    #paymentSection {
+      padding: 24px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      width: 93%;
+      justify-content: center;
+    }
+
+    .address-form h3,
+    #paymentSection h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 8px;
+      color: #333;
+      width: 100%;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .confirm-btn,
+    .address-form button {
+      padding: 12px;
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .confirm-btn:hover,
+    .address-form button:hover {
+      background-color: #3c9742;
+    }
+.summary-box {
+  font-family: monospace;
+  font-size: 14px;
+  width: 90%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr 3fr 2fr;
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.summary-row.header {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+.summary-row.total {
+  font-weight: bold;
+  border-top: 2px solid #aaa;
+  padding-top: 8px;
+}
+
+    @media (max-width: 900px) {
+      .payment-main {
+        display: block;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ✅ HEADER (Same as Home/Product Page) -->
+  <!-- ✅ HEADER -->
   <header class="main-header">
     <div class="header-left">
       <h1 class="logo">
@@ -21,37 +119,85 @@
       <span class="location">📍 600003, Chennai</span>
       <a href="checkout.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
       <div class="settings">
-        <span class="profile-icon" onclick="handleSettingsClick()" title="Settings">⚙️</span>
+        <a href="settings.html" onclick="localStorage.setItem('settingsFrom', 'payment')">⚙️</a>
       </div>
     </div>
   </header>
 
   <!-- ✅ Breadcrumb -->
-  <div class="breadcrumb">
-    <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a> / <a href="payment.html">Payment</a>
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="product.html">Product</a> / <a href="checkout.html">Checkout</a> / <a href="payment.html">Payment</a>
+    </div>
+    <div class="back-btn">
+      <a href="javascript:history.back()" class="back-button">👈 Back</a>
+    </div>
   </div>
 
+  <!-- ✅ Main Payment Section -->
   <main class="payment-main">
-    <h1>💳 Payment Details</h1>
-
-    <!-- ✅ Cart Summary -->
-    <div id="orderSummary" class="summary-box">
-      <!-- Filled by JS -->
+    <!-- ✅ Left Column: Address Form -->
+    <div id="addressSection" class="address-form">
+      <h3>Confirm Delivery Address</h3>
+      <input type="text" id="a_name" placeholder="Full Name" />
+      <input type="tel" id="a_phone" placeholder="Phone Number" />
+      <input type="text" id="a_pincode" placeholder="PIN Code" />
+      <input type="text" id="a_address" placeholder="Full Address" />
+      <button onclick="submitAddress()">Submit Address</button>
     </div>
 
-    <!-- ✅ Payment Method -->
-    <h3>Select Payment Method</h3>
-    <select id="paymentMethod" class="payment-dropdown">
-      <option value="card">Card</option>
-      <option value="wallet">Wallet</option>
-      <option value="upi">UPI</option>
-    </select>
+    <!-- ✅ Inside the Right Column: Payment Section -->
+    <div id="paymentSection" style="display: none;">
+      <h3>Order Summary</h3>
+    <div class="summary-box">
+  <div class="summary-row header">
+    <span>Product</span>
+    <span>Variant</span>
+    <span>Qty x Price</span>
+    <span>Amount</span>
+  </div>
+  <div id="orderSummary"></div>
+</div>
 
-    <br><br>
-    <button onclick="confirmPayment()" class="confirm-btn">✅ Confirm Payment</button>
+
+      <h3>Select Payment Method</h3>
+      <div class="payment-tabs">
+        <button onclick="showPaymentForm('card')" class="payment-tab active">💳 Card</button>
+        <button onclick="showPaymentForm('wallet')" class="payment-tab">💳 Wallet</button>
+        <button onclick="showPaymentForm('upi')" class="payment-tab">📱 UPI</button>
+      </div>
+
+      <input type="hidden" id="paymentMethod" value="card">
+
+      <!-- ✅ Payment Method Forms -->
+      <div id="cardForm" class="payment-form">
+        <input type="text" placeholder="Card Holder Name" />
+        <input type="text" placeholder="Card Number" maxlength="16" />
+        <div style="display: flex; gap: 10px;">
+          <input type="text" placeholder="MM/YY" style="flex:1" />
+          <input type="text" placeholder="CVV" maxlength="3" style="flex:1" />
+        </div>
+      </div>
+
+      <div id="walletForm" class="payment-form" style="display: none;">
+        <input type="text" placeholder="Enter Wallet ID or Email" />
+        <select>
+          <option>Paytm</option>
+          <option>PhonePe</option>
+          <option>Amazon Pay</option>
+        </select>
+      </div>
+
+      <div id="upiForm" class="payment-form" style="display: none;">
+        <input type="text" placeholder="Enter UPI ID (e.g., name@bank)" />
+      </div>
+
+      <br>
+      <button onclick="confirmPayment()" class="confirm-btn">✅ Confirm Payment</button>
+    </div>
   </main>
 
-  <!-- ✅ FOOTER (Same as Other Pages) -->
+  <!-- ✅ FOOTER -->
   <footer class="site-footer">
     <div class="footer-top">
       <div class="footer-links">
@@ -68,7 +214,7 @@
     </div>
   </footer>
 
-  <!-- ✅ Script -->
+  <!-- ✅ Scripts -->
   <script src="js/payment.js"></script>
   <script>
     function isLoggedIn() {
@@ -81,7 +227,6 @@
       window.location.href = 'login.html';
     }
 
-    // ✅ Routine login protection
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.routine2-content a').forEach(link => {
         link.addEventListener('click', e => {
@@ -94,9 +239,22 @@
           }
         });
       });
+
+      const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+      document.getElementById('a_name').value = profile.fname || '';
+      document.getElementById('a_phone').value = profile.phone || '';
+      document.getElementById('a_pincode').value = profile.pin || '';
+      document.getElementById('a_address').value = profile.address || '';
+
+      if (profile.email) {
+        const walletInput = document.querySelector('#walletForm input');
+        if (walletInput) walletInput.value = profile.email;
+
+        const upiInput = document.querySelector('#upiForm input');
+        if (upiInput) upiInput.value = profile.email;
+      }
     });
 
-    // ✅ Settings icon login protection
     function handleSettingsClick() {
       if (!isLoggedIn()) {
         localStorage.setItem('loginRedirect', 'settings.html');
