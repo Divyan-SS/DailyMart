@@ -46,6 +46,13 @@ body {
 .orange {
   color: #ff4d4f;
 }
+
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+
 /* === New Routine Dropdown Variant === */
 .routine2 {
   position: relative;
